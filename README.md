@@ -29,7 +29,7 @@ This is the repo for my self-learning notes for full-stack web development.
 ### 4. Advanced
 - Testing
 - web API
-- SSR framework: [Next.js](front-end/Nextjs.md)
+- [Next.js](front-end/Nextjs.md)
 - Static site generator
 
 ## 🌻 Back-end
