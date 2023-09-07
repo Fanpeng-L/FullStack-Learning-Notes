@@ -4,7 +4,7 @@ This is the repo for my self-learning notes for full-stack web development.
 # 📌 Index  
 ## 🌻 Front-end
 ### 1. Basics
-- HTML
+- [HTML](front-end/HTML.md)
 - CSS
   - CSS framework
     - tailwind
