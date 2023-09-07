@@ -14,7 +14,7 @@ This is the repo for my self-learning notes for full-stack web development.
 
 
 ### 2. Framework
-- React
+- [React](front-end/React.md)
 - Angular
 
 ### 3. Others
