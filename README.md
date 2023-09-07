@@ -9,7 +9,7 @@ This is the repo for my self-learning notes for full-stack web development.
   - CSS framework
     - tailwind
     - bootstrap
-- JavaScript
+- [JavaScript](front-end/JavaScript.md)
 - Git 
 
 
