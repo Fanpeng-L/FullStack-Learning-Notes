@@ -2,7 +2,7 @@
 This is the repo for my self-learning notes for full-stack web development.
 
 # Index
-## Front-end
+### Front-end
 - HTML
 - CSS
 - JavaScript
