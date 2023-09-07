@@ -138,7 +138,7 @@ function HomePage() {
   const [likes, setLikes] = React.useState(0);
 }
 ```
-```
+```jsx
 function HomePage() {
   // ...
   const [likes, setLikes] = React.useState(0);
