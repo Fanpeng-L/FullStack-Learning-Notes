@@ -4,7 +4,7 @@
 **Client-Side Rendering:**  
 In a standard React application, the browser receives an empty HTML shell from the server along with the JavaScript instructions to construct the UI. This is called client-side rendering because the initial rendering work happens on the user's device.  
 **Pre-Rendering:**  
-Next.js pre-renders every page by default. The HTML is generated in advance, on a server, instead of having it all done by JavaScript on the user's device.
+Next.js **pre-renders every page** by default. The HTML is generated in advance, on a server, instead of having it all done by JavaScript on the user's device.
 
 <br>
 
@@ -23,3 +23,4 @@ import Link from 'next/link';
 ```
 The Link component enables client-side navigation between two pages in the same Next.js app. Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser.  
 
+## 3. Metadata 
