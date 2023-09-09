@@ -6,6 +6,9 @@ In a standard React application, the browser receives an empty HTML shell from t
 **Pre-Rendering:**  
 Next.js **pre-renders every page** by default. The HTML is generated in advance, on a server, instead of having it all done by JavaScript on the user's device.
 
+💡 When to use Server-side rendering?
+- When the data needs to be up-to-date with every request
+
 <br>
 
 ## 2. Pages (React components)
