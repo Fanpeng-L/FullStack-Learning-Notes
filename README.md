@@ -19,7 +19,7 @@ This is the repo for my self-learning notes for full-stack web development.
 
 ### 3. Others
 - TypeScript
-- NPM
+- [npm](front-end/npm.md)
 - Markdown
 - Terminal
 - HTTP clients
