@@ -6,7 +6,7 @@ This is the repo for my self-learning notes for full-stack web development.
 ### 1. Basics
 - [HTML](front-end/HTML.md)
 - CSS
-  - tailwind
+  - [tailwind](front-end/tailwind.md)
   - bootstrap
 - [JavaScript](front-end/JavaScript.md)
   - [ES6](front-end/ES6.md)
