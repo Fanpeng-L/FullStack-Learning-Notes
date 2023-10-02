@@ -8,3 +8,9 @@
 `npm i -D prettier-plugin-tailwindcss`  
 <img width="736" alt="Screenshot 2023-10-01 at 17 26 27" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/5459c7c5-6566-44a4-8136-1d5f4465ffd5">
 
+### 4. Flexbox can be inherited by its children
+when `flex` is applied to a parent element, its children automatically become flex items and inherit the flex container's behaviour, alignment, and other Flexbox properties.
+
+
+
+
