@@ -11,6 +11,7 @@
 ### 4. Flexbox can be inherited by its children
 when `flex` is applied to a parent element, its children automatically become flex items and inherit the flex container's behaviour, alignment, and other Flexbox properties.
 
-
+### 5. scroll margins
+to leave margins when scrolling
 
 
