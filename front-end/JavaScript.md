@@ -13,26 +13,19 @@ Math.round(2.8)
 "hello"
 ```
 
-# 3. combine html / css / javascript
-```js
-console.log(2+2);
-console.log("some" + "text");
-```
-
-# 4. Variables
+# 3. Variables
 3 ways to create variable:  
 ```js
 let variable1 = 2;
-const variable2 = 3;   // we cannot change the value later
+const variable2 = 3;   // cannot change the value later
 var variable3 = 3;     // we don't use it in new javascript code
 console.log(typeof vairable2);
 ```  
-when reassigning a variable, don’t need to use `let` again
 
-# 5. boolean & if
+# 4. boolean & if
 ```js
 if (true) {
-	console.log('hello');
+console.log('hello');
 } else {
 console.log('bye');
 }
@@ -42,14 +35,12 @@ console.log('bye');
 !true  //not 
 ```
 
-☆ if statement create **new scope**. so the variable created within the scope cannot be accessed outside of the scope.
+☆ `if` statement create **new scope**. the variable created within the scope cannot be accessed outside of the scope.
 
-? :  (ternary operator)
-
+`? : ` (ternary operator)
 ```js
 if (true) {'truthy'}
 else {'falsy'}
-
 // 👆this is equal to this👇
 const result = true ? 'truthy' : 'falsy';
 console.log(result);  //truthy
@@ -57,67 +48,43 @@ const result = 0 ? 'truthy' : 'falsy';
 console.log(result);  //falsy
 ```
 
-&& (guard operator): use this feature to guard the code 
+`&&` (guard operator):
 
 ```jsx
 const message = false && 'hello';
 console.log(message);
-// the code will not run because of the left is false
+//The code will not run because the left is false
 
 // 👆this is equal to this👇
 if (condition) {console.log('hello');}
 ```
 
-OR operator ||  (also called default operator)
+`||` (OR operator, also called default operator)
 
 ```jsx
 const currency = 'EUR' || 'USD'; 
-console.log(currency);    // EUR    because the left side is true.it doesn't run the right side.
+console.log(currency);    // EUR    because the left side is true. it doesn't run the right side.
 const currency = undefined || 'USD'; 
 console.log(currency);    // USD    this time it will run the right side.
 ```
 
-# 6. Functions
+# 5. Functions
 we can reuse the code:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Functions</title>
-  </head>
+<script>
+function function1() {
+    console.log("hello");
+    console.log(2 + 2);
+}
 
-  <body>
-    <script>
-      function function1() {
-        console.log("hello");
-        console.log(2 + 2);
-      }
-
-      function1();
-			function1();
-    </script>
-  </body>
-</html>
+function1();
+</script>
 ```
 
-return a variable is preferred to global variable, to avoid scope conflict.
+return a variable is preferred to a global variable, to avoid scope conflict.
 
-`parameter` is like a variable that saved in the function.
-
+`parameter` is like a variable that is saved in the function.
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Functions</title>
-  </head>
-
-  <body>
     <script>
       function calculatorTax(cost, taxPercent) {
         console.log(cost * taxPercent);
@@ -126,23 +93,10 @@ return a variable is preferred to global variable, to avoid scope conflict.
       calculatorTax(4000, 0.2);
       calculatorTax(3000, 0.1);
     </script>
-  </body>
-</html>
 ```
 
-we can also set the default value for the parameter: so if the parameter value was not provided, it will pass the default value.
-
-```jsx
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Functions</title>
-  </head>
-
-  <body>
+We can also set the default value for the parameter: so if the parameter value was not provided, it will pass the default value.
+```html
     <script>
       function calculatorTax(cost, taxPercent=0.1) {
         console.log(cost * taxPercent);
@@ -151,22 +105,11 @@ we can also set the default value for the parameter: so if the parameter value w
       calculatorTax(4000, 0.2);
       calculatorTax(3000);
     </script>
-  </body>
-</html>
 ```
 
-# 7. Objects
+# 6. Objects
+an object example:
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ojbects</title>
-  </head>
-
-  <body>
     <script>
       const product = {
         name: "socks",
@@ -174,7 +117,7 @@ we can also set the default value for the parameter: so if the parameter value w
       };
       console.log(product);
       console.log(product.name);
-			console.log(product["name"]);   //bracket notation. does the same thing as dot.
+      console.log(product["name"]);   //bracket notation. does the same thing as dot.
 
       product.name = "cotton socks"; //change the value to a new one
       console.log(product);
@@ -185,8 +128,6 @@ we can also set the default value for the parameter: so if the parameter value w
       delete product.newProperty;
       console.log(product);
     </script>
-  </body>
-</html>
 
 // {name: 'socks', price:1090}
 // socks
@@ -196,70 +137,44 @@ we can also set the default value for the parameter: so if the parameter value w
 ```
 
 Nested object:
-
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ojbects</title>
-  </head>
-
-  <body>
     <script>
       const product = {
         name: "socks",
         rating: {
-					stars: 4.5,
-					count: 87
-				}
+	    stars: 4.5,
+	    count: 87
+	}
       };
-			console.log(product.rating.count)
+      console.log(product.rating.count)
 
       product.name = "cotton socks"; //change the value to a new one
       console.log(product);
     </script>
-  </body>
-</html>
 ```
 
-we can also put function into object:
-
+we can also put the function into an object:   
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ojbects</title>
-  </head>
-
-  <body>
     <script>
       const product = {
         name: "socks",
         rating: {
-					stars: 4.5,
-					count: 87
-				}
-				fun: function function1() {
-					console.log("function inside object");
-				}
+	    stars: 4.5,
+            count: 87
+        }
+	fun: function function1() {
+ 	    console.log("function inside object");
+	}
       };
-			console.log(product.rating.count)
-			product.fun();
+      console.log(product.rating.count)
+      product.fun();
     </script>
-  </body>
-</html>
 ```
 
-# 8. JSON built-in object (javascript object notation)
+# 7. JSON built-in object (javascript object notation)
 JSON only uses `“”` and it does not support functions. we use JSON when sending data between computers and store data.  
 
-here, we converted the object into the JSON format string:
+here, we converted the object into the JSON format string, and the method will be lost:
 ```js
 const myObject = {
   name: "Fanpeng",
