@@ -205,6 +205,8 @@ convert JSON into JS (we can notice here the method was lost):
 const receiveJSON = JSON.parse(sendJSON);
 console.log(receiveJSON);
 //{name: "Fanpeng", hobbies: Array(3)}
+console.log(reveiveJSON);
+//object
 ```
 
 ## Local storage  (a little confusing)
