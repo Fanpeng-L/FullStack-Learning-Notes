@@ -1,6 +1,3 @@
-# Index:
-1. 
-
 # 1. Numbers & Math
 
 ```js
@@ -11,73 +8,45 @@ Math.round(2.8)
 ```
 
 # 2. String
-
 ```js
-// two kinds of string. the first one is template string, 
-// it can insert values directly into the string.
-
-`hello`   //backtick string (it can interpolation)
-
-// it can also vary in multiple lines.
-
+`hello`   //backtick string (it can interpolation)  
 "hello"
 ```
 
-# 3. combine html css javascript
-
-![Screenshot 2023-05-31 at 00.05.54.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00d649e3-fbb0-4019-a700-fc4c072a4eb6/Screenshot_2023-05-31_at_00.05.54.png)
-
-two ways to run javascript code in html
-
-`onclick=`        `<script><script>`
-
-```jsx
+# 3. combine html / css / javascript
+```js
 console.log(2+2);
 console.log("some" + "text");
 ```
 
 # 4. Variables
-
-3 ways to create variable: 
-
-```jsx
+3 ways to create variable:  
+```js
 let variable1 = 2;
 const variable2 = 3;   // we cannot change the value later
 var variable3 = 3;     // we don't use it in new javascript code
 console.log(typeof vairable2);
-```
-
-when reassign a variable, don’t need to use `let` again
-
-![Screenshot 2023-05-31 at 14.29.02.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/af5b68fe-90be-4677-adca-7fac871b3e2a/Screenshot_2023-05-31_at_14.29.02.png)
-
-![Screenshot 2023-05-31 at 14.28.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/082081f8-f78e-482a-9f4d-4be781270889/Screenshot_2023-05-31_at_14.28.14.png)
+```  
+when reassigning a variable, don’t need to use `let` again
 
 # 5. boolean & if
-
-![Screenshot 2023-05-31 at 16.09.26.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b6e05f3-4860-4727-a2f0-53d55c06c612/Screenshot_2023-05-31_at_16.09.26.png)
-
-![Screenshot 2023-05-31 at 17.25.03.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cb037821-de3d-4115-a144-8907cde076a5/Screenshot_2023-05-31_at_17.25.03.png)
-
-```jsx
+```js
 if (true) {
 	console.log('hello');
 } else {
 console.log('bye');
 }
 
-&&     //and 
-||     //or 
-!true  //not
+&&     //and  
+||     //or  
+!true  //not 
 ```
 
 ☆ if statement create **new scope**. so the variable created within the scope cannot be accessed outside of the scope.
 
-![Screenshot 2023-05-31 at 17.29.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bb936e73-74c2-416f-8ad3-2ca2f33d5eaa/Screenshot_2023-05-31_at_17.29.14.png)
-
 ? :  (ternary operator)
 
-```jsx
+```js
 if (true) {'truthy'}
 else {'falsy'}
 
@@ -109,9 +78,7 @@ console.log(currency);    // USD    this time it will run the right side.
 ```
 
 # 6. Functions
-
 we can reuse the code:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -189,7 +156,6 @@ we can also set the default value for the parameter: so if the parameter value w
 ```
 
 # 7. Objects
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
