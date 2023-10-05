@@ -200,11 +200,11 @@ console.log(typeof sendJSON); // string
 console.log(sendJSON.name); // undefined
 ```
 
-convert JSON into JS:
-
+convert JSON into JS (we can notice here the method was lost):
 ```html
-const jsonString = JSON.stringify(product);
-JSON.parse(jsonString);
+const receiveJSON = JSON.parse(sendJSON);
+console.log(receiveJSON);
+//{name: "Fanpeng", hobbies: Array(3)}
 ```
 
 ## Local storage  (a little confusing)
