@@ -170,6 +170,9 @@ we can also put the function into an object:
       product.fun();
     </script>
 ```
+## Objects are references
+even we create the object with `const`, we can still change the value inside of the object. when comparing 2 objects, we are comparing the references not the values inside.
+
 
 # 7. JSON built-in object (javascript object notation)
 JSON only uses `“”` and it does not support functions. we use JSON when sending data between computers and store data.  
@@ -223,24 +226,6 @@ localStorage.setItem('message', 'hello'); //save in local storage
 localStorage.removeItem('message'); 
 ```
 
-## Null & undefined
-
-![Screenshot 2023-06-04 at 11.42.03.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44ed403d-45d3-4350-8927-60acd46f1f54/Screenshot_2023-06-04_at_11.42.03.png)
-
-## Auto-boxing
-
-```html
-console.log('hello'.length);
-console.log('hello'.toUpperCase());
-
-//JS automatically wrap strings into a special object
-```
-
-## Objects are references
-
-working with object, even we create the object with `const`, we can still change the value inside of the object.
-
-when comparing 2 objects, we are comparing the references not the values inside.
 
 ### Shortcut:
 
