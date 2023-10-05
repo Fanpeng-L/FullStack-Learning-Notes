@@ -212,7 +212,7 @@ console.log(reveiveJSON);
 //object
 ```
 
-## Local storage  (a little confusing)
+# 8. Local storage
 
 all variables are temporary, when refreshing the page, the storage will lost.
 
@@ -226,44 +226,7 @@ localStorage.setItem('message', 'hello'); //save in local storage
 localStorage.removeItem('message'); 
 ```
 
-
-### Shortcut:
-
-**destructuring**: take the message property outside the object and save it as a message variable
-
-`const { message } = object;`
-
-👆=👇
-
-`const message = object.message;`
-
-**Shorthand property:**
-
-`const object = { message: message}`
-
-👆=👇
-
-`const object = {message}`
-
-**Shorthand method**
-
-```html
-const ojbect = {
-	method: funtion function1() {
-		console.log("method");
-	}
-}
-
-👆=👇
-
-const ojbect = {
-	method() {
-		console.log("method");
-	}
-}
-```
-
-# 8. DOM (built-in document object model)
+# 9. DOM (built-in document object model)
 
 the DOM combines JS and HTML together, and we can have HTML elements inside JS, HTML will converted to JS object. it gives control of JS to the webpage.
 
@@ -298,10 +261,6 @@ the DOM combines JS and HTML together, and we can have HTML elements inside JS, 
 it can get any element from the page and put it inside JS.
 
 `<input/>`
-
-![Screenshot 2023-06-05 at 17.00.00.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e3434737-251b-4d5e-b29f-8141d4283fbd/Screenshot_2023-06-05_at_17.00.00.png)
-
-![Screenshot 2023-06-05 at 17.01.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a2427d02-0f39-4787-a59a-f3bedc325fc3/Screenshot_2023-06-05_at_17.01.14.png)
 
 `<input/>` `innerHTML` `onkeydown=””`
 
@@ -400,127 +359,6 @@ window.document
 window.alert
 ```
 
-# 9. HTML CSS and JS together
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>DOM Projects</title>
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .subscribe-button {
-        border: none;
-        background-color: black;
-        color: white;
-        padding-top: 10px;
-        padding-left: 15px;
-        padding-bottom: 10px;
-        padding-right: 15px;
-        font-weight: bold;
-        border-radius: 50px;
-        cursor: pointer;
-        margin-bottom: 30px;
-      }
-
-      .is-subscribed {
-        background-color: rgb(240, 240, 240);
-        color: black;
-      }
-
-      .cost-input {
-        font-size: 15px;
-        padding: 10px;
-      }
-
-      .calculate-button {
-        background-color: green;
-        color: white;
-        border: none;
-        font-size: 15px;
-        padding: 12px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-
-  <body>
-    <p>YouTube Subscribe Button</p>
-
-    <button
-      onclick="
-      subscribe();
-    "
-      class="js-subscribe-button subscribe-button">
-      Subscribe
-    </button>
-
-    <p>Amazon Shipping Calculator</p>
-
-    <input
-      placeholder="Cost of order"
-      class="js-cost-input cost-input"
-      onkeydown="
-      handleCostKeydown(event);
-    " />
-
-    <button
-      onclick="
-      calculateTotal();
-    "
-      class="calculate-button">
-      Calculate
-    </button>
-
-    <p class="js-total-cost"></p>
-
-    <script>
-      String(25);
-      console.log("25" - 5);
-      console.log("25" + 5);
-
-      window.document;
-      window.console.log("window");
-      window.alert;
-
-      function handleCostKeydown(event) {
-        if (event.key === "Enter") {
-          calculateTotal();
-        }
-      }
-
-      function calculateTotal() {
-        const inputElement = document.querySelector(".js-cost-input");
-        let cost = Number(inputElement.value);
-
-        if (cost < 40) {
-          cost = cost + 10;
-        }
-
-        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
-      }
-
-      function subscribe() {
-        const buttonElement = document.querySelector(".js-subscribe-button");
-
-        if (buttonElement.innerText === "Subscribe") {
-          buttonElement.innerHTML = "Subscribed";
-          buttonElement.classList.add("is-subscribed");
-        } else {
-          buttonElement.innerHTML = "Subscribe";
-          // add a class to change the color of the button
-          buttonElement.classList.remove("is-subscribed");
-        }
-      }
-    </script>
-  </body>
-</html>
-```
-
 # 10. Arrays & Loops
 
 ```html
@@ -548,7 +386,7 @@ window.alert
         console.log(todoList[i]);
       }
 
-			const nums = [10, 20, 30];
+      const nums = [10, 20, 30];
       nums[nums.length - 1] = 99;
       console.log(nums);
 
@@ -569,7 +407,7 @@ window.alert
     </script>
 ```
 
-```jsx
+```js
 const todoList = ["make dinner", "wash dishes"];
 
 renderTodoList();
@@ -600,16 +438,6 @@ function addTodo() {
 ```
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
     <script>
       function minMax(nums) {
         const result = { min: nums[0], max: nums[0] };
@@ -628,17 +456,8 @@ function addTodo() {
         return result;
       }
     </script>
-  </body>
-</html>
 ```
-
-![Screenshot 2023-06-10 at 11.16.56.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b015eafd-1d5e-44eb-a216-eec659bf4c29/Screenshot_2023-06-10_at_11.16.56.png)
-
-array is reference, so array1 and array2 are both modified👆
-
-so, if we don’t want to change the original array, we can make a copy of array1 using `.slice()` method:
-
-![Screenshot 2023-06-10 at 11.40.55.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac26b79c-6e20-4cf5-982a-52189f42c63e/Screenshot_2023-06-10_at_11.40.55.png)
+if we don’t want to change the original array, we can make a copy of array1 using `.slice()` method:
 
 ```html
 //other ways to get the value from the array:
@@ -646,7 +465,7 @@ so, if we don’t want to change the original array, we can make a copy of array
 const [firstValue, secondValue] = [1,2,3];
 ```
 
-```jsx
+```js
 for (let i = 1; i <= 10; i++) {
   if (i === 3) {
     continue; // which can skip number 3
@@ -658,110 +477,8 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
-# 11. Advanced Functions
 
-### **functions are values**
-
-**they** **can be saved in variables.**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      const add = function () {
-        console.log(2 + 3);
-      };
-
-      add();
-    </script>
-  </body>
-</html>
-```
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      function greeting() {
-        console.log("hello");
-      }
-      greeting();
-
-      const function1 = function greeting() {
-        console.log("hello2");
-      };
-
-      console.log(function1);
-    </script>
-  </body>
-</html>
-```
-
-we can also save the functions value in an object: 
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      const object1 = {
-        num: 2,
-        function1: function() {  //here we create an anonymous function within an object
-          console.log("hello");
-        },
-      };
-      object1.function1();
-    </script>
-  </body>
-</html>
-```
-
-passing a function into another function:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      function run(param) {
-        param();
-      }
-
-      run(function () {
-        console.log("hello!");
-      });
-    </script>
-  </body>
-</html>
-```
-
-### setTimeout() setInterval()
+# 11. setTimeout() setInterval()
 
 `setTimeout()`
 
@@ -789,8 +506,6 @@ computer won’t wait for a line to finish before going to the next line.
   </body>
 </html>
 ```
-
-![Screenshot 2023-06-10 at 17.18.08.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b9d77e01-d953-4ea7-8826-0744a1f5c7ab/Screenshot_2023-06-10_at_17.18.08.png)
 
 `setInterval()`
 
@@ -831,8 +546,7 @@ another way to loop through array
       ["make dinner", "wash dishes", "watch youtube"].forEach(function (value) {
         console.log(value);
       });
-
-			["make dinner", "wash dishes", "watch youtube"].forEach(function (v, i) {
+      ["make dinner", "wash dishes", "watch youtube"].forEach(function (v, i) {
         console.log(v);
         console.log(i);
     </script>
@@ -865,7 +579,7 @@ but in `forEach` style loop, we can only use `continue`, we can no longer use `b
 </html>
 ```
 
-### Arrow function
+# Arrow function
 
 mostly work the same way as normal function
 
@@ -895,7 +609,7 @@ mostly work the same way as normal function
 </html>
 ```
 
-### .forEach()
+# .forEach()
 
 ```html
 <!DOCTYPE html>
@@ -922,7 +636,7 @@ mostly work the same way as normal function
 </html>
 ```
 
-### .addEventListener()
+# .addEventListener()
 
 ```html
 <!DOCTYPE html>
@@ -958,130 +672,3 @@ what is `.addEventListener()` advantages:
 so we can have more control of the button compare with `onclick`
 
 ### .filter()  .map()
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      [1, -3, 5].filter((value, index) => {
-        return value >= 0;
-      });
-
-      [1, 1, 3].map((value, index) => {
-        return value + 10;
-      });
-
-			//👆 is equal to 👇:
-			[1, 1, 3].map((value) => value + 10);
-    </script>
-  </body>
-</html>
-```
-
-`closure` feature: 
-
-![Screenshot 2023-06-11 at 18.05.04.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4f5a941a-2662-40de-b041-dc9b2c48b3e4/Screenshot_2023-06-11_at_18.05.04.png)
-
----
-
-# Amazon project
-
-## main idea of JS (3 steps)
-
-1. save the data
-
-often, we use the combination of `list` and `object` to create and save the data of the products
-
-```jsx
-const products = [
-  {
-    image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-    name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-    rating: { stars: 4.5, count: 87 },
-    priceCents: 1090,
-  },
-
-  {
-    image: "images/products/intermediate-composite-basketball.jpg",
-    name: "Intermediate Size Basketball",
-    rating: { stars: 4, count: 127 },
-    priceCents: 2095,
-  },
-
-  {
-    image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
-    name: "Adults Plain Cotton T-Shirt - 2 Pack",
-    rating: { stars: 4.5, count: 56 },
-    priceCents: 799,
-  },
-];
-```
-
-1. generate HTML using JS
-
-```jsx
-let productsHTML = "";
-
-products.forEach((product) => {
-  productsHTML += `
-    <div class="product-container">
-    <div class="product-image-container">
-        <img
-        class="product-image"
-        src="${product.image}" />
-    </div>
-
-    <div class="product-name limit-text-to-2-lines">
-        ${product.name}
-    </div>
-
-    <div class="product-rating-container">
-        <img class="product-rating-stars" src="images/ratings/rating-${
-          product.rating.stars * 10
-        }.png" />
-        <div class="product-rating-count link-primary">${product.rating.count}</div>
-    </div>
-
-    <div class="product-price">$${(product.priceCents / 100).toFixed(2)}</div>
-
-    <div class="product-quantity-container">
-        <select>
-        <option selected value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-    </div>
-
-    <div class="product-spacer"></div>
-
-    <div class="added-to-cart">
-        <img src="images/icons/checkmark.png" />
-        Added
-    </div>
-
-    <button class="add-to-cart-button button-primary">Add to Cart</button>
-    </div>`;
-});
-
-console.log(productsHTML);
-
-document.querySelector(".js-products-grid").innerHTML = productsHTML;
-```
-
-the benefits of creating HTML is that we don’t need to copy and paste HTML every time when adding new products, we can simply add in the product list. 
-
-1. make it interactive
