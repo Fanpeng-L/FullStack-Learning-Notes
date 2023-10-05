@@ -256,9 +256,34 @@ we can also put function into object:
 </html>
 ```
 
-# JSON built-in object (javascript object notation)
-JSON only uses “” and it does not support functions. we use JSON when sending data between computers and store data  
+# 8. JSON built-in object (javascript object notation)
+JSON only uses `“”` and it does not support functions. we use JSON when sending data between computers and store data.  
 
+here, we converted the object into the JSON format string:
+```js
+const myObject = {
+  name: "Fanpeng",
+  hobbies: ["reading", "coding", "swimming"],
+  hello: function () {
+    console.log("hello!");
+  },
+};
+
+console.log(myObject);
+// {
+//     name: 'Fanpeng',
+//     hobbies: [ 'reading', 'coding', 'swimming' ],
+//     hello: [Function: hello]
+// }
+console.log(myObject.name); // Fanpeng
+myObject.hello(); //hello!
+console.log(typeof myObject); // object
+
+const sendJSON = JSON.stringify(myObject);
+console.log(sendJSON); // {"name":"Fanpeng","hobbies":["reading","coding","swimming"]}
+console.log(typeof sendJSON); // string
+console.log(sendJSON.name); // undefined
+```
 
 convert JSON into JS:
 
