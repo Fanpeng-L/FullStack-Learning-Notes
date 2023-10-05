@@ -256,44 +256,9 @@ we can also put function into object:
 </html>
 ```
 
-## JSON built-in object (javascript object notation)
+# JSON built-in object (javascript object notation)
+JSON only uses “” and it does not support functions. we use JSON when sending data between computers and store data  
 
-JSON only use “”   and it does not support functions
-
-we use JSON when sending data between computers and store data 
-
-convert JS to JSON:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ojbects</title>
-  </head>
-
-  <body>
-    <script>
-      const product = {
-        name: "socks",
-        rating: {
-					stars: 4.5,
-					count: 87
-				}
-				fun: function function1() {
-					console.log("function inside object");
-				}
-      };
-			console.log(product.rating.count)
-			product.fun();
-
-			JSON.stringify(product);  //convert product into JSON
-    </script>
-  </body>
-</html>
-```
 
 convert JSON into JS:
 
