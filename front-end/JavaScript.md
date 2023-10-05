@@ -201,7 +201,7 @@ console.log(sendJSON.name); // undefined
 ```
 
 convert JSON into JS (we can notice here the method was lost):
-```html
+```javascript
 const receiveJSON = JSON.parse(sendJSON);
 console.log(receiveJSON);
 //{name: "Fanpeng", hobbies: Array(3)}
