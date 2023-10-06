@@ -15,13 +15,13 @@ Any computer linked to a network has a unique address - "IP address" (Internet P
 **web page**  
 A document which can be displayed in a web browser.
 
-**website**
+**website**  
 A website is a collection of linked web pages that share a unique domain name.  
 
-**web server**
+**web server**  
 A computer that hosts a website on the Internet.
 
-**search engine**
+**search engine**  
 A web service that helps you find other web pages. 
 
 The library is like a web server, which is similar to a web server hosting multiple websites. The library has several science, math, and history sections, the sections are like websites. One website may have several web pages and web pages can each be found at a unique location (URL).
