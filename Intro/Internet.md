@@ -25,13 +25,3 @@ A computer that hosts a website on the Internet.
 A web service that helps you find other web pages. 
 
 The library is like a web server, which is similar to a web server hosting multiple websites. The library has several science, math, and history sections, the sections are like websites. One website may have several web pages and web pages can each be found at a unique location (URL).
-
-### 4. What is the difference between the Internet and the Web?  
-
-The Internet is infrastructure while the Web is served on top of that infrastructure. Alternatively, the Internet can be viewed as a big book store while the Web can be viewed as a collection of books on that store. At a high level, we can even think of the Internet as hardware and the Web as software!
-
-### 5. How does the Web work?
-Computers connected to the internet are called clients and servers. 
-
-Clients are your devices connected to Wi-Fi or network and web-accessing software (such as a web browser).  
-Servers are computers that store webpages, sites, or apps. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be displayed in the user's web browser.
