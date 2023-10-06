@@ -2,8 +2,9 @@
 This is the repo for my self-learning notes for full-stack web development.
 
 # 📌 Index  
-## Internet
-- [Internet](Internet/Internet.md)
+## Intro
+- [Internet](Intro/Internet.md)
+- [Web](Intro/Web.md)
 ## 🌻 Front-end
 ### 1. Basics
 - [HTML](front-end/HTML.md)
