@@ -13,6 +13,7 @@ hexadecimal
 
 ## Absolute & Relative units  
 <img width="545" alt="Screenshot 2023-10-07 at 19 34 21" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/ae479fa4-07cc-4d89-99c3-b38c23480652">  
+
 Absolute units is not recommended used for responsive websites.
 
 
