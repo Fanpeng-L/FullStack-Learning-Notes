@@ -76,3 +76,17 @@ to specify which radio choice, we need `value` attribute in the input:
     </form>
 ```   
 <img width="441" alt="Screenshot 2023-10-07 at 17 26 45" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/3fbb820c-ed7a-44f0-8d67-155a22f0f938">   
+
+#### textarea:  
+
+#### validation  
+
+**Required / minlength / maxlength**  
+```html
+   <form action="">
+      <label for="firstname">Enter firstname:</label>
+      <input type="text" id="firstname" name="firstname" required />
+      <button>Submit</button>
+    </form>
+```    
+<img width="418" alt="Screenshot 2023-10-07 at 17 41 34" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/68393a7c-fc86-4c05-aa9d-8e67563edee6">
