@@ -65,10 +65,6 @@ one problem em can cause is:
 ### rem
 <img width="482" alt="Screenshot 2023-10-08 at 00 36 45" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/ea5df885-35b2-4046-8970-6f5b64628623">
 
-Absolute and Relative:
-<img width="618" alt="Screenshot 2023-10-03 at 16 55 15" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/17af5454-213e-4868-a1cc-502e0acd1fbc">
-
-
 # 2. CSS Properties
 
 ## opacity & alpha channel
@@ -93,6 +89,26 @@ it includes: transition-property, transition-duration, transition-timing-functio
 <img width="197" alt="Screenshot 2023-10-08 at 18 56 57" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/31a39431-8b41-4a12-b50f-37ccac1238ef">
 
 # 3. responsive & flexbox
+## flexbox
+- flex-direction  
+<img width="588" alt="Screenshot 2023-10-08 at 19 20 49" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/8db687e9-ab39-4b06-943d-2ea4592bf732">
+<img width="581" alt="Screenshot 2023-10-08 at 19 25 43" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/e62e6294-7ca1-45ff-94c0-450b879f8f92">
+
+- justify-content (main axis)
+- flex-wrap 
+- align-items (cross axis)
+- align-content (only has effect on flex-wrap)
+- align-self
+- flex-basis
+- flex-grow
+- flex-shrink
+
+👇 
+flex: 1 1 600px   // grow, shrink, basis
+
+## responsive: media queries
+@media min-width:
+
 
 
 
