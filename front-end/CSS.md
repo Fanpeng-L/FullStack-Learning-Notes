@@ -71,5 +71,28 @@ Absolute and Relative:
 
 # 2. CSS Properties
 
+## opacity & alpha channel
+<img width="350" alt="Screenshot 2023-10-08 at 16 46 10" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/83677a25-1b8f-4eed-b7ba-c7a5dcd066f8">
+
+## position
+- static
+- relative
+- absolute (depend on the parent position property)
+- fixed
+- sticky
+
+## transition
+it includes: transition-property, transition-duration, transition-timing-function, and transition-delay.
+
+## transform - also applies to its children
+- rotate()
+- scale()
+- translate()
+- skew()  
+
+<img width="197" alt="Screenshot 2023-10-08 at 18 56 57" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/31a39431-8b41-4a12-b50f-37ccac1238ef">
+
+# 3. responsive & flexbox
+
 
 
