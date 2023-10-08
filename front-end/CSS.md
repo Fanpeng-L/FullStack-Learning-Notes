@@ -2,9 +2,9 @@
 ## Rule
 <img width="642" alt="Screenshot 2023-10-07 at 18 13 46" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/d3e64732-0839-41ae-837d-e60840c2fcf5">
 
-**1. Inline Style** not good idea  
+**1. Inline Style** (not good idea)  
 **2. <style> element**  
-**3. style.css external stylesheet**✅  
+**3. style.css external stylesheet** ✅  
 
 ## color system:  
 - RGB  
@@ -44,11 +44,11 @@ border-width; border-color; border-style
 
 <img width="601" alt="Screenshot 2023-10-08 at 00 08 09" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/184b28a1-bd59-4647-bde3-311b914cdfb7">
 
-💡`body` has defaulf margin, so we can set to 0 when we start to style the CSS.
+💡`body` has default margin, so we can set to 0 when we start to style the CSS.
 
 ### display property
 - display: inline  
-- display: block  
+- display: block    
 change the take up space.  
 <img width="801" alt="Screenshot 2023-10-08 at 00 18 45" src="https://github.com/Fanpeng-L/FullStack-Learning-Notes/assets/90544605/0768af25-81e8-4209-8973-5b6d249807a3">
 
