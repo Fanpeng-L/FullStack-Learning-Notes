@@ -4,8 +4,8 @@ This is the repo of my learning notes for full-stack web development.
 
 # 🌐 Intro
 
-- [Internet](Intro/Internet.md)
-- [Web](Intro/Web.md)
+- [Internet](1.%20Intro/Internet.md)
+- [Web](1.%20Intro/Web.md)
 
 # 🌻 Front-end
 
