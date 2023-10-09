@@ -11,23 +11,23 @@ This is the repo of my learning notes for full-stack web development.
 
 ## 1. Basics
 
-- [HTML](front-end/HTML.md)
-- [CSS](front-end/CSS.md)
-  - [tailwind](front-end/tailwind.md)
-  - [bootstrap](front-end/bootstrap.md)
-- [JavaScript](front-end/JavaScript.md)
-  - [ES6](front-end/ES6.md)
+- [HTML](2.%20Front-end/HTML.md)
+- [CSS](2.%20Front-end/CSS.md)
+  - [tailwind](2.%20Front-end/tailwind.md)
+  - [bootstrap](2.%20Front-end/bootstrap.md)
+- [JavaScript](2.%20Front-end/JavaScript.md)
+  - [ES6](2.%20Front-end/ES6.md)
 - Git
 
 ## 2. Framework
 
-- [React](front-end/React.md)
+- [React](2.%20Front-end/React.md)
 - Angular
 
 ## 3. Others
 
 - TypeScript
-- [npm](front-end/npm.md)
+- [npm](2.%20Front-end/npm.md)
 - Markdown
 - Terminal
 - HTTP clients
@@ -38,7 +38,7 @@ This is the repo of my learning notes for full-stack web development.
 
 - Testing
 - web API
-- [Next.js](front-end/Nextjs.md)
+- [Next.js](2.%20Front-end/Nextjs.md)
 - Static site generator
 
 # 🌻 Back-end
