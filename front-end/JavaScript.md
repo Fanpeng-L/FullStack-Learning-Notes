@@ -1,5 +1,7 @@
-# 1. Numbers & Math
+# 1. Basic Types
 
+## Numbers
+in js, we only have one number type
 ```js
 Math.round(2.2)
 //2
@@ -7,22 +9,13 @@ Math.round(2.8)
 //3
 ```
 
-# 2. String
+## String
 ```js
 `hello`   //backtick string (it can interpolation)  
 "hello"
 ```
 
-# 3. Variables
-3 ways to create variable:  
-```js
-let variable1 = 2;
-const variable2 = 3;   // cannot change the value later
-var variable3 = 3;     // we don't use it in new javascript code
-console.log(typeof vairable2);
-```  
-
-# 4. boolean & if
+## Boolean
 ```js
 if (true) {
 console.log('hello');
@@ -67,6 +60,19 @@ console.log(currency);    // EUR    because the left side is true. it doesn't ru
 const currency = undefined || 'USD'; 
 console.log(currency);    // USD    this time it will run the right side.
 ```
+
+## null
+
+## undifined
+
+# 3. Variables
+3 ways to create variable:  
+```js
+let variable1 = 2;
+const variable2 = 3;   // cannot change the value later
+var variable3 = 3;     // we don't use it in new javascript code
+console.log(typeof vairable2);
+```  
 
 # 5. Functions
 we can reuse the code:
