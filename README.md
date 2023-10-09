@@ -1,26 +1,31 @@
 # FullStack-Learning-Notes
-This is the repo for my self-learning notes for full-stack web development.
 
-# 📌 Index  
-## Intro
+This is the repo of my learning notes for full-stack web development.
+
+# 🌐 Intro
+
 - [Internet](Intro/Internet.md)
 - [Web](Intro/Web.md)
-## 🌻 Front-end
-### 1. Basics
+
+# 🌻 Front-end
+
+## 1. Basics
+
 - [HTML](front-end/HTML.md)
 - [CSS](front-end/CSS.md)
   - [tailwind](front-end/tailwind.md)
   - [bootstrap](front-end/bootstrap.md)
 - [JavaScript](front-end/JavaScript.md)
   - [ES6](front-end/ES6.md)
-- Git 
+- Git
 
+## 2. Framework
 
-### 2. Framework
 - [React](front-end/React.md)
 - Angular
 
-### 3. Others
+## 3. Others
+
 - TypeScript
 - [npm](front-end/npm.md)
 - Markdown
@@ -29,37 +34,44 @@ This is the repo for my self-learning notes for full-stack web development.
 - UI Design Principles
 - Design Tools
 
-### 4. Advanced
+## 4. Advanced
+
 - Testing
 - web API
 - [Next.js](front-end/Nextjs.md)
 - Static site generator
 
-## 🌻 Back-end
-### 1. Server-side Language
+# 🌻 Back-end
+
+## 1. Server-side Language
+
 - Python
 - Node.js
 - Java
 
-### 2. Framework
+## 2. Framework
+
 - Django
 - Express
 - Sprintboot
 
-### 3. Database
+## 3. Database
+
 - Relational
 - Non-relational
 
-### 4. API
+## 4. API
+
 - REST
 - Graphql
 
-### 5. Others
+## 5. Others
+
 - security
 - deployment
-  
 
-## 🌻 Extra
-### 1. Mobile
+# 🌻 Extra
 
-### 2. Desktop
+## 1. Mobile
+
+## 2. Desktop
