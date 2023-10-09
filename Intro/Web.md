@@ -12,4 +12,4 @@ Servers are computers that store webpages, sites, or apps. When a client device 
 
 So the whole process is like:
 
-<img alt="web" src="../images/Intro/web.png">
+<img width="600" alt="web" src="../images/Intro/web.png">
