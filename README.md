@@ -10,7 +10,7 @@ This is the repo for my self-learning notes for full-stack web development.
 - [HTML](front-end/HTML.md)
 - [CSS](front-end/CSS.md)
   - [tailwind](front-end/tailwind.md)
-  - bootstrap
+  - [bootstrap](front-end/bootstrap.md)
 - [JavaScript](front-end/JavaScript.md)
   - [ES6](front-end/ES6.md)
 - Git 
