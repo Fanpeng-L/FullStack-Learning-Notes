@@ -1,14 +1,17 @@
 # React
-> React is a declarative UI library. JS (imperative) is like telling the cook to "Knit the dough, roll the dough, add tomato sauce, add cheese, add ham, add pineapple, bake at 200 degrees Celsius in a stone oven for...”. But React is like to tell the cook: “A Hawaiian pizza please!” 
+
+> React is a declarative UI library. JS (imperative) is like telling the cook to "Knit the dough, roll the dough, add tomato sauce, add cheese, add ham, add pineapple, bake at 200 degrees Celsius in a stone oven for...”. But React is like to tell the cook: “A Hawaiian pizza please!”
 
 ## Index
+
 1. Building UI with Components
 2. Props
 
 <br>
 
 ### 1. Building UI with Components
-In React, components are functions that return UI elements. The component should be capitalised. 
+
+In React, components are functions that return UI elements. The component should be capitalised.
 
 ```jsx
 <script type="text/jsx">
@@ -20,9 +23,11 @@ In React, components are functions that return UI elements. The component should
    ReactDOM.render(<Header />, app)
 </script>
 ```
+
 <br>
 
 ### 2. Props
+
 Like the attributes in HTML, we can pass information as properties to components. Then, these props can pass from parent components to child components.  
 Here, we pass `title` as props from `HomePage` to `Header`:
 
@@ -35,21 +40,24 @@ function HomePage() {
   );
 }
 ```
+
 if we `console.log` the props, we can see that the props is object with a `title` property:
+
 ```jsx
 function Header(props) {
-    console.log(props) // { title: "React 💙" }
- }
+  console.log(props); // { title: "React 💙" }
+}
 
- function HomePage() {
-   return (
-     <div>
-       <Header title="React 💙" />
-     </div>
-   )
- }
- ReactDOM.render(<HomePage />, app)
+function HomePage() {
+  return (
+    <div>
+      <Header title="React 💙" />
+    </div>
+  );
+}
+ReactDOM.render(<HomePage />, app);
 ```
+
 So object destructuring can be used, also use curly braces {} to write regular JavaScript directly inside JSX markup:
 
 ```jsx
@@ -61,14 +69,15 @@ return <h1>{title}</h1>;
 <br>
 
 ### 3. Iterate in an array and arrow function
+
 ```jsx
 function HomePage() {
-  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+  const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
 
   return (
     <div>
       <Header title="Develop. Preview. Ship. 🚀" />
-      <ul >
+      <ul>
         {names.map((name) => (
           <li key={name}>{name}</li>
         ))}
@@ -77,11 +86,13 @@ function HomePage() {
   );
 }
 ```
+
 👆 Here, a key is needed to identify the unique items in an array.
 
 <br>
 
 ### 4. Event Handler
+
 - Listen to events: (event names are camelCased)
 
 ```jsx
@@ -95,7 +106,9 @@ function HomePage() {
   );
 }
 ```
+
 - handle event:
+
 ```jsx
 function HomePage() {
   // ...
@@ -112,12 +125,14 @@ function HomePage() {
      )
    }
 ```
+
 - call the handle:
+
 ```jsx
 function HomePage() {
   //    ...
   function handleClick() {
-    console.log('increment like count');
+    console.log("increment like count");
   }
 
   return (
@@ -132,12 +147,15 @@ function HomePage() {
 <br>
 
 ### 5. State
+
 `useState()` returns an array, so we can access the array values with array destructuring:
+
 ```jsx
 function HomePage() {
   const [likes, setLikes] = React.useState(0);
 }
 ```
+
 ```jsx
 function HomePage() {
   // ...
@@ -155,6 +173,7 @@ function HomePage() {
   );
 }
 ```
+
 💡Props is read-only information that's passed to components. State is information that can change over time, usually triggered by user interaction.
 
-### 6. 
+### 6.

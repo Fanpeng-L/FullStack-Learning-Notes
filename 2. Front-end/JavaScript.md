@@ -1,21 +1,53 @@
-# 1. Basic Types
+# 💜 JavaScript Basics
 
-## Numbers
-in js, we only have one number type
+## 1. Numbers & math
+
+in JavaScript, we only have one number type.
+
+`+ - * / % **`
+
 ```js
-Math.round(2.2)
+Math.round(2.2);
 //2
-Math.round(2.8)
+Math.round(2.8);
 //3
 ```
 
-## String
+`NaN`
+
+It is number type, but represent sth that is not a number.
+
 ```js
-`hello`   //backtick string (it can interpolation)  
-"hello"
+0 / 0;
+// NaN
+typeof NaN;
+//number
+NaN * 123;
+//NaN
+```
+
+## 2. Variables
+
+3 ways to create variable:
+
+```js
+let variable1 = 2;
+
+const variable2 = 3; // cannot change the value later
+
+var variable3 = 3; // we don't use it in new javascript code
+console.log(typeof vairable2);
+```
+
+## String
+
+```js
+`hello`; //backtick string (it can interpolation)
+("hello");
 ```
 
 ## Boolean
+
 ```js
 if (true) {
 console.log('hello');
@@ -23,167 +55,173 @@ console.log('hello');
 console.log('bye');
 }
 
-&&     //and  
-||     //or  
-!true  //not 
+&&     //and
+||     //or
+!true  //not
 ```
 
 ☆ `if` statement create **new scope**. the variable created within the scope cannot be accessed outside of the scope.
 
 `? : ` (ternary operator)
+
 ```js
-if (true) {'truthy'}
-else {'falsy'}
+if (true) {
+  ("truthy");
+} else {
+  ("falsy");
+}
 // 👆this is equal to this👇
-const result = true ? 'truthy' : 'falsy';
-console.log(result);  //truthy
-const result = 0 ? 'truthy' : 'falsy';
-console.log(result);  //falsy
+const result = true ? "truthy" : "falsy";
+console.log(result); //truthy
+const result = 0 ? "truthy" : "falsy";
+console.log(result); //falsy
 ```
 
 `&&` (guard operator):
 
 ```jsx
-const message = false && 'hello';
+const message = false && "hello";
 console.log(message);
 //The code will not run because the left is false
 
 // 👆this is equal to this👇
-if (condition) {console.log('hello');}
+if (condition) {
+  console.log("hello");
+}
 ```
 
 `||` (OR operator, also called default operator)
 
 ```jsx
-const currency = 'EUR' || 'USD'; 
-console.log(currency);    // EUR    because the left side is true. it doesn't run the right side.
-const currency = undefined || 'USD'; 
-console.log(currency);    // USD    this time it will run the right side.
+const currency = "EUR" || "USD";
+console.log(currency); // EUR    because the left side is true. it doesn't run the right side.
+const currency = undefined || "USD";
+console.log(currency); // USD    this time it will run the right side.
 ```
 
 ## null
 
 ## undifined
 
-# 3. Variables
-3 ways to create variable:  
-```js
-let variable1 = 2;
-const variable2 = 3;   // cannot change the value later
-var variable3 = 3;     // we don't use it in new javascript code
-console.log(typeof vairable2);
-```  
-
 # 5. Functions
+
 we can reuse the code:
+
 ```html
 <script>
-function function1() {
+  function function1() {
     console.log("hello");
     console.log(2 + 2);
-}
+  }
 
-function1();
+  function1();
 </script>
 ```
 
 return a variable is preferred to a global variable, to avoid scope conflict.
 
 `parameter` is like a variable that is saved in the function.
-```html
-    <script>
-      function calculatorTax(cost, taxPercent) {
-        console.log(cost * taxPercent);
-      }
 
-      calculatorTax(4000, 0.2);
-      calculatorTax(3000, 0.1);
-    </script>
+```html
+<script>
+  function calculatorTax(cost, taxPercent) {
+    console.log(cost * taxPercent);
+  }
+
+  calculatorTax(4000, 0.2);
+  calculatorTax(3000, 0.1);
+</script>
 ```
 
 We can also set the default value for the parameter: so if the parameter value was not provided, it will pass the default value.
-```html
-    <script>
-      function calculatorTax(cost, taxPercent=0.1) {
-        console.log(cost * taxPercent);
-      }
 
-      calculatorTax(4000, 0.2);
-      calculatorTax(3000);
-    </script>
+```html
+<script>
+  function calculatorTax(cost, taxPercent = 0.1) {
+    console.log(cost * taxPercent);
+  }
+
+  calculatorTax(4000, 0.2);
+  calculatorTax(3000);
+</script>
 ```
 
 # 6. Objects
+
 an object example:
+
 ```html
-    <script>
-      const product = {
-        name: "socks",
-        price: 1090,
-      };
-      console.log(product);
-      console.log(product.name);
-      console.log(product["name"]);   //bracket notation. does the same thing as dot.
+<script>
+  const product = {
+    name: "socks",
+    price: 1090,
+  };
+  console.log(product);
+  console.log(product.name);
+  console.log(product["name"]); //bracket notation. does the same thing as dot.
 
-      product.name = "cotton socks"; //change the value to a new one
-      console.log(product);
+  product.name = "cotton socks"; //change the value to a new one
+  console.log(product);
 
-      product.newProperty = ture;
-      console.log(product);
+  product.newProperty = ture;
+  console.log(product);
 
-      delete product.newProperty;
-      console.log(product);
-    </script>
+  delete product.newProperty;
+  console.log(product);
+</script>
 
-// {name: 'socks', price:1090}
-// socks
-// {name: 'cotton socks', price:1090}
-// {name: 'cotton socks', price:1090, newProperty: true}
-// {name: 'cotton socks', price:1090}
+// {name: 'socks', price:1090} // socks // {name: 'cotton socks', price:1090} //
+{name: 'cotton socks', price:1090, newProperty: true} // {name: 'cotton socks',
+price:1090}
 ```
 
 Nested object:
-```html
-    <script>
-      const product = {
-        name: "socks",
-        rating: {
-	    stars: 4.5,
-	    count: 87
-	}
-      };
-      console.log(product.rating.count)
 
-      product.name = "cotton socks"; //change the value to a new one
-      console.log(product);
-    </script>
+```html
+<script>
+  const product = {
+    name: "socks",
+    rating: {
+      stars: 4.5,
+      count: 87,
+    },
+  };
+  console.log(product.rating.count);
+
+  product.name = "cotton socks"; //change the value to a new one
+  console.log(product);
+</script>
 ```
 
-we can also put the function into an object:   
+we can also put the function into an object:
+
 ```html
-    <script>
-      const product = {
-        name: "socks",
-        rating: {
-	    stars: 4.5,
-            count: 87
-        }
-	fun: function function1() {
- 	    console.log("function inside object");
-	}
-      };
-      console.log(product.rating.count)
-      product.fun();
-    </script>
+<script>
+       const product = {
+         name: "socks",
+         rating: {
+      stars: 4.5,
+             count: 87
+         }
+  fun: function function1() {
+  	    console.log("function inside object");
+  }
+       };
+       console.log(product.rating.count)
+       product.fun();
+</script>
 ```
+
 ## Objects are references
+
 even we create the object with `const`, we can still change the value inside of the object. when comparing 2 objects, we are comparing the references not the values inside.
 
-
 # 7. JSON built-in object (javascript object notation)
-JSON only uses `“”` and it does not support functions. we use JSON when sending data between computers and store data.  
+
+JSON only uses `“”` and it does not support functions. we use JSON when sending data between computers and store data.
 
 here, we converted the object into the JSON format string, and the method will be lost:
+
 ```js
 const myObject = {
   name: "Fanpeng",
@@ -210,6 +248,7 @@ console.log(sendJSON.name); // undefined
 ```
 
 convert JSON into JS (we can notice here the method was lost):
+
 ```javascript
 const receiveJSON = JSON.parse(sendJSON);
 console.log(receiveJSON);
@@ -225,11 +264,8 @@ all variables are temporary, when refreshing the page, the storage will lost.
 Local storage will not clear the variables when refreshing, but **it only support strings:**
 
 ```html
-localStorage.getItem('message');
-
-localStorage.setItem('message', 'hello'); //save in local storage
-
-localStorage.removeItem('message'); 
+localStorage.getItem('message'); localStorage.setItem('message', 'hello');
+//save in local storage localStorage.removeItem('message');
 ```
 
 # 9. DOM (built-in document object model)
@@ -255,7 +291,7 @@ the DOM combines JS and HTML together, and we can have HTML elements inside JS, 
 
     <script>
       document.body.innerHTML = "hello";
-			document.body.innerHTML = "<button>Good Job!</button>";
+      document.body.innerHTML = "<button>Good Job!</button>";
       document.title = "Good job!";
     </script>
   </body>
@@ -282,14 +318,17 @@ it can get any element from the page and put it inside JS.
 
   <body>
     <p>YouTube Subscribe Button</p>
-    <button onclick="subscribe();" class="js-subscribe-button">Subscribe</button>
+    <button onclick="subscribe();" class="js-subscribe-button">
+      Subscribe
+    </button>
 
     <p>Amazon Shipping Calculator</p>
 
     <input
       placeholder="Cost of order"
       class="js-cost-input"
-      onkeydown="handleCostKeydown(event)" />
+      onkeydown="handleCostKeydown(event)"
+    />
 
     <button onclick="calculateTotal();">Calculator</button>
     <p class="js-total-cost"></p>
@@ -341,14 +380,16 @@ to get value in the input: `.value`
           document.querySelector('.js-message')
             .innerHTML = `Your name is: ${inputElement.value}`;
         }
-      " />
+      "
+    />
 
     <button
       onclick="
       const inputElement = document.querySelector('.js-name-input');
       document.querySelector('.js-message')
         .innerHTML = `Your name is: ${inputElement.value}`;
-    ">
+    "
+    >
       Submit
     </button>
 
@@ -360,57 +401,55 @@ to get value in the input: `.value`
 **window (built-in object) ——the webpage**
 
 ```html
-window.console
-window.document
-window.alert
+window.console window.document window.alert
 ```
 
 # 10. Arrays & Loops
 
 ```html
 <script>
-      const myArray = [10, 20, 30];
-      console.log(myArray);
+  const myArray = [10, 20, 30];
+  console.log(myArray);
 
-      myArray.length;
-      myArray.push(100);
-      myArray.splice(0, 2);
+  myArray.length;
+  myArray.push(100);
+  myArray.splice(0, 2);
 
-      let i = 1;
-      while (i <= 5) {
-        console.log(i);
-        i += 1;
-      }
+  let i = 1;
+  while (i <= 5) {
+    console.log(i);
+    i += 1;
+  }
 
-      for (let i = 1; i <= 5; i++) {
-        console.log(i);
-      }
+  for (let i = 1; i <= 5; i++) {
+    console.log(i);
+  }
 
-      const todoList = ["make dinner", "wash dishes", "watch youtube"];
+  const todoList = ["make dinner", "wash dishes", "watch youtube"];
 
-      for (let i = 0; i < todoList.length; i++) {
-        console.log(todoList[i]);
-      }
+  for (let i = 0; i < todoList.length; i++) {
+    console.log(todoList[i]);
+  }
 
-      const nums = [10, 20, 30];
-      nums[nums.length - 1] = 99;
-      console.log(nums);
+  const nums = [10, 20, 30];
+  nums[nums.length - 1] = 99;
+  console.log(nums);
 
-      const nums = [1, 2, 3];
-      let total = 0;
+  const nums = [1, 2, 3];
+  let total = 0;
 
-      for (let i = 0; i < nums.length; i++) {
-        const num = nums[i];
-        total += num;
-      }
-      console.log(total);
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    total += num;
+  }
+  console.log(total);
 
-      const numsDoubled = [];
-      for (let i = 0; i < nums.length; i++) {
-        const num = nums[i];
-        numsDoubled.push(num * 2);
-      }
-    </script>
+  const numsDoubled = [];
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    numsDoubled.push(num * 2);
+  }
+</script>
 ```
 
 ```js
@@ -444,31 +483,31 @@ function addTodo() {
 ```
 
 ```html
-    <script>
-      function minMax(nums) {
-        const result = { min: nums[0], max: nums[0] };
+<script>
+  function minMax(nums) {
+    const result = { min: nums[0], max: nums[0] };
 
-        for (let i = 0; i < nums.length; i++) {
-          const value = nums[i];
+    for (let i = 0; i < nums.length; i++) {
+      const value = nums[i];
 
-          if (value < result.min) {
-            result.min = value;
-          }
-
-          if (value > result.max) {
-            result.max = value;
-          }
-        }
-        return result;
+      if (value < result.min) {
+        result.min = value;
       }
-    </script>
+
+      if (value > result.max) {
+        result.max = value;
+      }
+    }
+    return result;
+  }
+</script>
 ```
+
 if we don’t want to change the original array, we can make a copy of array1 using `.slice()` method:
 
 ```html
-//other ways to get the value from the array:
-
-const [firstValue, secondValue] = [1,2,3];
+//other ways to get the value from the array: const [firstValue, secondValue] =
+[1,2,3];
 ```
 
 ```js
@@ -482,7 +521,6 @@ for (let i = 1; i <= 10; i++) {
   }
 }
 ```
-
 
 # 11. setTimeout() setInterval()
 
@@ -560,7 +598,7 @@ another way to loop through array
 </html>
 ```
 
-but in `forEach` style loop, we can only use `continue`, we can no longer use `break` to exit the loop. 
+but in `forEach` style loop, we can only use `continue`, we can no longer use `break` to exit the loop.
 
 ```html
 <!DOCTYPE html>
@@ -671,10 +709,9 @@ what is `.addEventListener()` advantages:
 
 1. multiple event listener for one event
 2. remove event listener
-    
-    `.removeEventListener()`
-    
+
+   `.removeEventListener()`
 
 so we can have more control of the button compare with `onclick`
 
-### .filter()  .map()
+### .filter() .map()
