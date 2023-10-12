@@ -1,21 +1,22 @@
 # 💜 JavaScript Basics
 
-## 1. Numbers & math
+> 5 basic types:
+>
+> 1. number
+> 2. string
+> 3. boolean
+> 4. null
+> 5. undefined
+
+## 1. Numbers
 
 in JavaScript, we only have one number type.
 
 `+ - * / % **`
 
-```js
-Math.round(2.2);
-//2
-Math.round(2.8);
-//3
-```
-
 `NaN`
 
-It is number type, but represent sth that is not a number.
+👉 It is number type, but represent sth that is not a number.
 
 ```js
 0 / 0;
@@ -33,75 +34,405 @@ NaN * 123;
 ```js
 let variable1 = 2;
 
-const variable2 = 3; // cannot change the value later
+const variable2 = 3; // more useful when using array & objects 💜
 
 var variable3 = 3; // we don't use it in new javascript code
-console.log(typeof vairable2);
 ```
 
-## String
+**increment operator**: `i++` vs. `++i`
+
+```js
+let i = 3;
+let result = i++;
+result; //3
+
+let i = 3;
+let result = ++i;
+result; //4
+```
+
+## 3. Boolean
+
+## 4. string
+
+When adding a string and a number, JS turns the number into a string and smushes them together.
+
+### 🌷 string method()
+
+with a ( ), it is a method, without it is a property, such as `XXXX.length`
+
+```js
+let msg = "hello, i am fanpeng";
+msg.toUpperCase(); //'HELLO, I AM FANPENG '
+
+let msg = "hello, i am fanpeng          ";
+msg.trim(); //'hello, i am fanpeng'
+```
+
+`replace()`
+
+`slice()`
+
+`indexOf()`
+
+`repeat()`
+
+### 🌷 template literal
 
 ```js
 `hello`; //backtick string (it can interpolation)
 ("hello");
 ```
 
-## Boolean
+## 5. null & undifined
+
+## 6. Math object
 
 ```js
-if (true) {
-console.log('hello');
-} else {
-console.log('bye');
-}
+Math.round(2.2); //2
 
-&&     //and
-||     //or
-!true  //not
+Math.round(2.8); //3
+
+Math.PI;
+
+Math.abs(-456); //456
+
+Math.pow(2, 5); //32
+
+Math.floor(3.999); //3
 ```
 
-☆ `if` statement create **new scope**. the variable created within the scope cannot be accessed outside of the scope.
-
-`? : ` (ternary operator)
+### 🌷 Random numbers
 
 ```js
-if (true) {
-  ("truthy");
+Math.random();
+```
+
+give a random number between 0 and 1
+
+```js
+const step1 = Math.random(); //0.596868984938493
+
+const step2 = step1 * 10; //5.96868984938493
+
+const step3 = Math.floor(step2); //5
+
+const step4 = step3 + 1;
+//6
+```
+
+we can generate a number between 1 and 10.
+
+<br>
+
+# 💜 Making Decisions with Boolean Logic
+
+## 1. Comparison operators
+
+`> < >= <= == != === !==`
+
+`==` checks for value equality, not types. Which can lead to confusion👇
+
+```js
+1 == 1; // true
+1 == "1"; // true
+0 == " "; // true
+null == undefined; // true
+```
+
+## 2. `if` statement
+
+- if
+- else if
+- else
+
+### 🌷 nesting conditions
+
+```js
+const password = prompt("Enter a new passoword here:");
+
+if (password.length >= 6) {
+  if (password.indexOf(" ") === -1) {
+    console.log("Valid password.");
+  } else {
+    console.log("Password cannot contain space.");
+  }
 } else {
-  ("falsy");
-}
-// 👆this is equal to this👇
-const result = true ? "truthy" : "falsy";
-console.log(result); //truthy
-const result = 0 ? "truthy" : "falsy";
-console.log(result); //falsy
-```
-
-`&&` (guard operator):
-
-```jsx
-const message = false && "hello";
-console.log(message);
-//The code will not run because the left is false
-
-// 👆this is equal to this👇
-if (condition) {
-  console.log("hello");
+  console.log("Password is too short.");
 }
 ```
 
-`||` (OR operator, also called default operator)
+### 🌷 Truthy & Falsy
 
-```jsx
-const currency = "EUR" || "USD";
-console.log(currency); // EUR    because the left side is true. it doesn't run the right side.
-const currency = undefined || "USD";
-console.log(currency); // USD    this time it will run the right side.
+falsy values:
+
+- false
+- 0
+- "" empty string
+- null
+- undefined
+- NaN
+
+Everything else is truthy.
+
+### 🌷 Logical Operators
+
+```js
+&& //and
+|| //or
+!  //not
 ```
 
-## null
+```js
+// && every side should be true:
+const password = prompt("Enter a password here: ");
 
-## undifined
+if (password.length >= 6 && password.indexOf(" ") === -1) {
+  console.log("Valid password.");
+} else {
+  console.log("Incorrect format.");
+}
+```
+
+```js
+// || one side should be true:
+const age = prompt("Enter your age: ");
+
+if (age < 5 || age > 65) {
+  console.log("Free!");
+} else if (age < 10) {
+  console.log("$10");
+} else if (age < 65) {
+  console.log("$20");
+}
+```
+
+```js
+// ! not
+!false; //true
+!null; //true
+```
+
+⭐️ `if` statement creates **new scope**. the variable created within the scope cannot be accessed outside of the scope.
+
+### 🌷 Switch statement
+
+(not commonly used)
+
+```js
+const day = 3;
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    cosnole.log("Tuesday");
+    break;
+  default:
+    console.log("I don't know that.");
+}
+```
+
+# 💜 Array (data structure)
+
+## 1. Array methods
+
+> `array`: **Ordered** collection of values.
+
+We can see the index here:
+
+<img src="../images/Front-end/array.png" alt="array" width="700">
+
+### 🌷 `push()` & `pop()`
+
+- `push()` add to the end
+- `pop()` remove the end
+
+```js
+let movieLine = ["tom", "nancy"];
+
+movieLine.push("oliver"); // ["tom","nancy","oliver"]
+
+movieline.pop(); // ["tom","nancy"]
+```
+
+### 🌷 `shift()` & `unshift()`
+
+- `shift()` remove the beginning
+- `unshift()` add to the beginning
+
+```js
+let movieLine = ["tom", "nancy", "pablo", "oliver"];
+
+movieLine.shift(); // ["nancy", "pablo", "oliver"]
+
+movieLine.unshift("VIP"); // ["VIP", "nancy", "pablo", "oliver"]
+```
+
+### 🌷 `concat()` & `includes()` & `reverse()`
+
+```js
+let cats = ["dodo", "shadow"];
+let dogs = ["orea", "cloud"];
+let catAndDog = cats.concat(dogs); //["dodo", "shadow", "orea", "cloud"]
+// ⭐️ but the cats and dogs are not changed
+
+cats.includes("dodo"); //true
+
+catAndDog.reverse(); //["cloud", "orea", "shadow", "dodo"]
+catAndDog; // ["cloud", "orea", "shadow", "dodo"]
+// ⭐️ the reverse() changed the original array
+```
+
+### 🌷 `slice()` & `splice()`
+
+`slice()` require the start and the end, but optional
+
+```js
+let color = ["red", "blue", "green", "yellow", "purple", "black", "white"];
+
+color.slice(3); // ["yellow", "purple", "black", "white"]
+
+color.slice(2, 4); // ["green", "yellow"]
+```
+
+`splice()` require the start, deletecount and items
+
+```js
+let color = ["red", "blue", "green", "yellow", "purple", "black", "white"];
+
+color.splice(1, 0, "pink"); //["red", "pink", "blue", "green", "yellow", "purple", "black", "white"]
+```
+
+### 🌷 `sort()`
+
+default sort order is ascending, which compare the UTF-16 code.
+
+## 2. Referfencing
+
+```js
+[] === []; // false
+[1, 2] === [1, 2]; //false
+```
+
+why?
+
+> when creating an array, JS allocate the special memory for it, they are distinct. They are not referring to the same thing in memory.
+
+here, num and numCopy are referring to the same array:
+
+```js
+let num = [1, 2, 3];
+let numCopy = num;
+num.push(4);
+num; // [1, 2, 3, 4]
+numCopy; //[1, 2, 3, 4]
+num === numCopy; // true
+```
+
+## 3. Array and Const
+
+the arrary points to a place:
+
+```js
+const nums = [1, 2, 3];
+nums.push(4); //[1, 2, 3, 4]
+```
+
+its like : the box stay the same, but the eggs (content) change
+
+<img src="../images/Front-end/array and const.png" alt="array and const" width="800">
+
+<br>
+
+# 💜 Object (data structure)
+
+> objects are collections of properties.
+>
+> properties are **key-value** pairs.
+
+Create object literals:
+
+```js
+const year = {
+  1999: "good",
+  2000: "bad",
+  nextYear: "maybe good",
+};
+
+year.1999; // "good"
+year["1999"]; // "good"
+```
+
+⭐️ all keys are converted to strings unless they are Symbols.
+
+⭐️ When Access values: can use dot `.` or `[""]`
+
+# 💜 Loop
+
+## 1. `for` loop
+
+```js
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+```
+
+loop over array:
+
+```js
+const animal = ["cat", "dog", "cow", "bird"];
+
+for (let i = 0; i < animal.length; i++) {
+  console.log(animal[i]);
+}
+```
+
+### 🌷 nested for loop
+
+```js
+for (let i = 1; i <= 10; i++) {
+  console.log(`i is: ${i}`);
+  for (let j = 1; j < 4; j++) {
+    console.log(`j is: ${j}`);
+  }
+}
+```
+
+## 2. `while` loop
+
+it is useful when unknown times of loop.
+
+**`break`** keyword:
+
+```js
+let input = prompt("Hi, enter somethign: ");
+while (true) {
+  input = prompt(input);
+  if (input.toLowerCase() === "stop copying me") break;
+}
+console.log("You win.");
+```
+
+A number guessing game:
+
+```js
+let maximum = parseInt(prompt("Enter a nubmer: ")); //parseInt convert a string num to a number
+
+Math.floor(Math.random() * 10) + 1;
+```
+
+## 3. `for...of` loop
+
+A easy way of iterable array.
+
+```js
+let animals = ["cat", "dog", "cow", "rabbit", "pig"];
+
+for (animal of animals) {
+  console.log(animal);
+}
+```
 
 # 5. Functions
 
