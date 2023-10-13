@@ -213,8 +213,6 @@ if (age < 5 || age > 65) {
 !null; //true
 ```
 
-⭐️ `if` statement creates **new scope**. the variable created within the scope cannot be accessed outside of the scope.
-
 ### 🌷 Switch statement
 
 (not commonly used)
@@ -296,7 +294,7 @@ color.slice(3); // ["yellow", "purple", "black", "white"]
 color.slice(2, 4); // ["green", "yellow"]
 ```
 
-`splice()` require the start, deletecount and items
+`splice()` require the start, deletecount and items to be added
 
 ```js
 let color = ["red", "blue", "green", "yellow", "purple", "black", "white"];
@@ -364,9 +362,11 @@ year.1999; // "good"
 year["1999"]; // "good"
 ```
 
-⭐️ all keys are converted to strings unless they are Symbols.
+⭐️ Tip: all keys are converted to strings unless they are Symbols.
 
-⭐️ When Access values: can use dot `.` or `[""]`
+⭐️ Tip: When Access values: can use dot `.` or `[""]`
+
+<br>
 
 # 💜 Loop
 
@@ -424,34 +424,190 @@ Math.floor(Math.random() * 10) + 1;
 
 ## 3. `for...of` loop
 
-A easy way of iterable array.
+A easy way of iterating array or other objects.
 
 ```js
 let animals = ["cat", "dog", "cow", "rabbit", "pig"];
 
-for (animal of animals) {
+for (let animal of animals) {
   console.log(animal);
 }
 ```
 
-# 5. Functions
-
-we can reuse the code:
-
-```html
-<script>
-  function function1() {
-    console.log("hello");
-    console.log(2 + 2);
-  }
-
-  function1();
-</script>
+```js
+let name = "lisa";
+for (let char of name) {
+  console.log(char);
+}
 ```
 
-return a variable is preferred to a global variable, to avoid scope conflict.
+### 🌷 iterate `object` with `for...in`
 
-`parameter` is like a variable that is saved in the function.
+```js
+const testScores = {
+  tom: 80,
+  damon: 67,
+  kim: 89,
+  shawn: 91,
+};
+
+for (let person in testScores) {
+  console.log(person);
+}
+// tom, damon...
+
+// it gives us all the keys in the object
+```
+
+or we can use `Object.keys(testScores)` to get all the keys, `Object.values(testScores)`, `Object.entries(testScores)`
+
+<br>
+
+# 💜 Functions
+
+## 1. Basics
+
+### 🌷 define & run
+
+> Functions are **Resuable** chunk of code.
+>
+> 2 steps:
+>
+> - define the function
+> - run it
+
+```js
+//define:
+function funcName() {
+  "do something";
+}
+
+funcName(); //run
+```
+
+### 🌷 arguments
+
+functions that accept inputs.
+
+```js
+// no arguments:
+"hello".toUpperCase();
+
+// with arguments:
+"hello".indexOf("o");
+```
+
+⭐️ Tip: parameter is like the placeholder when define the function, arguments are the actual value we pass into the function when the function is called.
+
+⭐️ Tip: the order of the arguments matters.
+
+### 🌷 Return (built-in method)
+
+- `return` can store values.
+- `return` ends functions execution
+
+## 2. More about Functions
+
+### 🌷 function scope
+
+> means variable visibility
+
+```js
+let totalEggs = 0;
+function collectEggs() {
+  totalEggs = 6;
+}
+console.log(totalEggs); // 0
+collectEggs();
+console.log(totalEggs); // 6
+```
+
+### 🌷 block scope
+
+```js
+let radius = 8;
+if (radius > 0) {
+  const PI = 3.14159;
+  let msg = "Hi";
+}
+
+console.log(radius); // 8
+console.log(msg); // not defined error
+```
+
+```js
+for (let i = 0; i < 5; i++) {
+  let msg = "asdfasdf";
+}
+console.log(msg); // not defined error
+```
+
+### 🌷 lexical scope
+
+child function has access to the parent function variable.
+
+but, parent function does not have access to the variable from child function.
+
+```js
+function bankRob() {
+  const heroes = ["spiderman", "batwoman", "black panther"];
+  function cryForHelp() {
+    for (let hero of heroes) {
+      console.log(`Please help us: ${hero.toUpperCase()}`);
+    }
+  }
+  cryForHelp();
+}
+```
+
+### 🌷 function expression
+
+store a no name function in a variable:
+
+```js
+const add = function (x, y) {
+  return x + y;
+};
+```
+
+### 🌷 higher order function
+
+1. accept other function as arguments
+
+```js
+function callTwice(func) {
+  func();
+  func();
+}
+
+function rollDie() {
+  const roll = Math.floor(Math.random() * 6) + 1;
+  console.log(roll);
+}
+
+callTwice(rollDie); // notice here we are not passing rollDie()
+```
+
+2. return a function
+
+### 🌷 define a method
+
+every function is a method
+
+```js
+const myMath = {
+  PI: 3.14159,
+  square: function (num) {
+    return num * num;
+  },
+}; // the function keyword can be omitted: square(num) {return num * num}
+
+myMath.square(3);
+```
+
+### 🌷 `this` keyword
+
+---
 
 ```html
 <script>
