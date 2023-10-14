@@ -607,101 +607,360 @@ myMath.square(3);
 
 ### 🌷 `this` keyword
 
----
+1. use `this` to access other property on the same object:
 
-```html
-<script>
-  function calculatorTax(cost, taxPercent) {
-    console.log(cost * taxPercent);
+```js
+const cat = {
+  name: "lily",
+  color: "white",
+  meow() {
+    console.log("this.color"); // white
+  },
+};
+```
+
+2. here, we are actually bonding the `meow2()`to the window object:
+
+```js
+const meow2 = cat.meow;
+```
+
+### 🌷 try / catch
+
+it prevent the code from crashing:
+
+```js
+try {
+  hello.toUpperCase();
+} catch {
+  console.log("error");
+}
+```
+
+<br>
+
+# 💜 Callback & Array methods
+
+> A callback function is a function passed into another function as an argumen.
+
+## 1. `foreach()` method
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.foreach(function (num) {
+  console.log(num);
+});
+```
+
+## 2. `map()` method
+
+**creates a new array** with the results of calling a provided function on **every element** in the calling array.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+const double = numbers.map(function (num) {
+  return num * 2;
+});
+```
+
+## 3. arrow function
+
+```js
+const add = function (x, y) {
+  return x + y;
+};
+
+// same as:
+
+const add = (x, y) => {
+  return x + y;
+};
+```
+
+```js
+// with single parameter, the () can be omitted
+const greet = (x) => {
+  return `Hey ${x}!`;
+};
+
+// arrow function without a parameter:
+
+const rollDie = () => {
+  return Math.floor(Math.random() * 10) + 1;
+};
+```
+
+### 🌷 implicit return
+
+```js
+// if we have only one expressionf or return, we can use implicit return:
+const rollDie = () => Math.floor(Math.random() * 6) + 1;
+// ⭐️ Tip: if the line is too long, we can use the () for the return value
+
+// for shorter ones, we can put them on one line:
+const add = (a, b) => a + b;
+```
+
+## 4. `setTimeout` & `setInterval`
+
+```js
+console.log("Hello!");
+setTimeout(() => console.log("are you still there..."), 3000);
+console.log("Goodbye!");
+
+// Hello
+// Goodbye
+// are you still there...
+```
+
+```js
+const id = setInterval(() => {
+  console.log(Math.random());
+}, 2000);
+// clearInterval(id)
+```
+
+## 5. `filter()` method
+
+**create a new array** with the elements that **pass the test** provided by the function:
+
+```js
+const nums = [9, 8, 7, 6, 5];
+const odds = nums.filter((n) => {
+  return n % 2 === 1; //if true, n is added to the new array
+});
+// [9, 7, 5]
+```
+
+## 6. `.some()` & `.every()` method
+
+boolean method
+
+`some()`: return true if any of the elements pass the test in the function;
+
+`every()`: return true only when all the elements pass the test in the function.
+
+```js
+const exams = [76, 55, 87, 79, 90, 68];
+
+exams.every((score) => score > 75); // false
+
+exams.some((score) => score > 75); // true
+
+const allEvens = (numbers) => numbers.every((num) => num % 2 === 0);
+```
+
+## 7. `reduce()`
+
+```js
+const prices = [91, 23, 55, 32, 20];
+let total = 0;
+for (let price of prices) {
+  total += price;
+}
+
+// this is equal to:👇
+
+const prices = [91, 23, 55, 32, 20];
+const sumPrice = prices.reduce((total, price) => {
+  total + price;
+});
+```
+
+```js
+// finding the minimum of the array:
+const numbers = [3, 43, 6, 7, 89, 9];
+
+const minNum = numbers.reduce((min, num) => {
+  if (num < min) {
+    return num;
   }
-
-  calculatorTax(4000, 0.2);
-  calculatorTax(3000, 0.1);
-</script>
+  return min;
+});
 ```
 
-We can also set the default value for the parameter: so if the parameter value was not provided, it will pass the default value.
+```js
+// reduce() can have a second argument:
+const numbers = [2, 4, 6, 8];
+numbers.reduce((sum, num) => sum + num, 100); // here, we added 100 to it
+// 120
+```
 
-```html
-<script>
-  function calculatorTax(cost, taxPercent = 0.1) {
-    console.log(cost * taxPercent);
+## 8. arrow function & `this`
+
+🌷 **confusing here**:
+
+```js
+const person = {
+  firstName: "tom",
+  lastName: "jackson",
+  fullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  shoutName: function () {
+    setTimeout(() => {
+      console.log(this);
+      console.log(this.fullName());
+    }, 3000);
+  },
+};
+```
+
+<br>
+
+# 💜 New features
+
+## 1. default params
+
+```js
+function rollDie(sides = 6) {
+  return Math.floor(Math.random() * sides) + 1;
+}
+```
+
+## 2. spread
+
+### 🌷 spread in function calls
+
+```js
+const nums = [12, 2, 4, 5, 7, 87, 45.34, 7, 67];
+console.log(...nums); // 12 2 4 5 7 87 45.34 7 67
+// we got the nums with spaces
+
+console.log("hello"); // hello
+console.log(..."hello"); // h e l l o
+```
+
+### 🌷 spread with array literals
+
+```js
+const cats = ["Whiskers", "Fluffy", "Mittens", "Oreo"];
+const dogs = ["Buddy", "Max", "Daisy", "Charlie"];
+
+const allPets = [...cats, ...dogs];
+// ["Whiskers", "Fluffy", "Mittens", "Oreo", "Buddy", "Max", "Daisy", "Charlie"];
+
+const allPets = ["Happy", ...cats, ...dogs]; // ["Happy", "Whiskers", "Fluffy", "Mittens", "Oreo", "Buddy", "Max", "Daisy", "Charlie"]
+```
+
+```js
+// we can also spread string:
+["hello"];
+[..."hello"]; // ["h", "e", "l", "l", "o"]
+```
+
+### 🌷 spread with object
+
+```js
+const cat = { legs: 4, family: "yellow" };
+const dog = { isFurry: true, family: "blue" };
+
+const catDog = { ...cat, ...dog }; // {legs: 4, family: 'blue', isFurry: true}
+// the two are combined but the order matters
+
+const catDog = { ...cat, ...dog, family: "pink" }; // we can also modify it
+// {legs: 4, family: 'pink', isFurry: true}
+```
+
+```js
+// spread array into object
+
+{...[2,3,4,5]} // {0: 2, 1: 3, 2: 4, 3: 5}
+```
+
+## 3. rest params
+
+different with spread, it allows us to pass a variable number of arguments to a function as an array.
+
+```js
+function sum(...numbers) {
+  let total = 0;
+  for (const number of numbers) {
+    total += number;
   }
+  return total;
+}
 
-  calculatorTax(4000, 0.2);
-  calculatorTax(3000);
-</script>
+console.log(sum(1, 2, 3, 4, 5)); // 15
 ```
 
-# 6. Objects
+## 4. destructuring
 
-an object example:
+### 🌷 with array
 
-```html
-<script>
-  const product = {
-    name: "socks",
-    price: 1090,
-  };
-  console.log(product);
-  console.log(product.name);
-  console.log(product["name"]); //bracket notation. does the same thing as dot.
+```js
+const raceResults = ["Eliud", "Feyisa", "Galen"];
+const [gold, silver, bronze] = raceResults;
+gold; // "Eliud"
+silver; // "Feyisa"
+bronze; // "Galen"
 
-  product.name = "cotton socks"; //change the value to a new one
-  console.log(product);
-
-  product.newProperty = ture;
-  console.log(product);
-
-  delete product.newProperty;
-  console.log(product);
-</script>
-
-// {name: 'socks', price:1090} // socks // {name: 'cotton socks', price:1090} //
-{name: 'cotton socks', price:1090, newProperty: true} // {name: 'cotton socks',
-price:1090}
+// we can also use ...to include others:
+const scores = [12312, 24234, 5345, 465345, 37356];
+const [gold, silver, bronze, ...everyoneElse] = scores;
+// here, everyoneElse: [465345, 37356]
 ```
 
-Nested object:
+### 🌷 with object
 
-```html
-<script>
-  const product = {
-    name: "socks",
-    rating: {
-      stars: 4.5,
-      count: 87,
-    },
-  };
-  console.log(product.rating.count);
+we can make variables from the properties:
 
-  product.name = "cotton socks"; //change the value to a new one
-  console.log(product);
-</script>
+```js
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  born: 1999,
+};
+
+const { firstName, lastName, born } = person;
+
+console.log(firstName); // John
+console.log(lastName); // Doe
+console.log(born); // 1999
 ```
 
-we can also put the function into an object:
+```js
+// but we can also rename the variable:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  born: 1999,
+};
 
-```html
-<script>
-       const product = {
-         name: "socks",
-         rating: {
-      stars: 4.5,
-             count: 87
-         }
-  fun: function function1() {
-  	    console.log("function inside object");
-  }
-       };
-       console.log(product.rating.count)
-       product.fun();
-</script>
+const { born: birthYear } = person;
+
+console.log(birthYear); // 1999
 ```
 
-## Objects are references
+### 🌷 with params
 
-even we create the object with `const`, we can still change the value inside of the object. when comparing 2 objects, we are comparing the references not the values inside.
+```js
+function printFullName({ firstName, lastName }) {
+  console.log(`${firstName} ${lastName}`);
+}
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+printFullName(person); // John Doe
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # 7. JSON built-in object (javascript object notation)
 
@@ -750,455 +1009,14 @@ all variables are temporary, when refreshing the page, the storage will lost.
 
 Local storage will not clear the variables when refreshing, but **it only support strings:**
 
-```html
-localStorage.getItem('message'); localStorage.setItem('message', 'hello');
-//save in local storage localStorage.removeItem('message');
-```
-
 # 9. DOM (built-in document object model)
 
 the DOM combines JS and HTML together, and we can have HTML elements inside JS, HTML will converted to JS object. it gives control of JS to the webpage.
 
-`document.body`
-
-`document.title`
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dom</title>
-  </head>
-
-  <body>
-    <button>hello</button>
-
-    <script>
-      document.body.innerHTML = "hello";
-      document.body.innerHTML = "<button>Good Job!</button>";
-      document.title = "Good job!";
-    </script>
-  </body>
-</html>
-```
-
-`document.querySelector()`
-
-it can get any element from the page and put it inside JS.
-
-`<input/>`
-
-`<input/>` `innerHTML` `onkeydown=””`
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dom project</title>
-  </head>
-
-  <body>
-    <p>YouTube Subscribe Button</p>
-    <button onclick="subscribe();" class="js-subscribe-button">
-      Subscribe
-    </button>
-
-    <p>Amazon Shipping Calculator</p>
-
-    <input
-      placeholder="Cost of order"
-      class="js-cost-input"
-      onkeydown="handleCostKeydown(event)"
-    />
-
-    <button onclick="calculateTotal();">Calculator</button>
-    <p class="js-total-cost"></p>
-
-    <script>
-      function handleCostKeydown(event) {
-        if (event.key === "Enter") {
-          calculateTotal();
-        }
-      }
-
-      function calculateTotal() {
-        const inputElement = document.querySelector(".js-cost-input");
-        let cost = Number(inputElement.value);
-
-        if (cost < 40) {
-          cost += 10;
-        }
-
-        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
-      }
-      function subscribe() {
-        const buttonElement = document.querySelector(".js-subscribe-button");
-
-        if (buttonElement.innerText === "Subscribe") {
-          buttonElement.innerText = "Subscribed";
-        } else {
-          buttonElement.innerText = "Subscribe";
-        }
-      }
-    </script>
-  </body>
-</html>
-```
-
-to get value in the input: `.value`
-
-```html
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body>
-    <input
-      placeholder="Name"
-      class="js-name-input"
-      onkeydown="
-        if (event.key === 'Enter') {
-          const inputElement = document.querySelector('.js-name-input');
-          document.querySelector('.js-message')
-            .innerHTML = `Your name is: ${inputElement.value}`;
-        }
-      "
-    />
-
-    <button
-      onclick="
-      const inputElement = document.querySelector('.js-name-input');
-      document.querySelector('.js-message')
-        .innerHTML = `Your name is: ${inputElement.value}`;
-    "
-    >
-      Submit
-    </button>
-
-    <p class="js-message"></p>
-  </body>
-</html>
-```
-
 **window (built-in object) ——the webpage**
 
-```html
-window.console window.document window.alert
-```
-
-# 10. Arrays & Loops
-
-```html
-<script>
-  const myArray = [10, 20, 30];
-  console.log(myArray);
-
-  myArray.length;
-  myArray.push(100);
-  myArray.splice(0, 2);
-
-  let i = 1;
-  while (i <= 5) {
-    console.log(i);
-    i += 1;
-  }
-
-  for (let i = 1; i <= 5; i++) {
-    console.log(i);
-  }
-
-  const todoList = ["make dinner", "wash dishes", "watch youtube"];
-
-  for (let i = 0; i < todoList.length; i++) {
-    console.log(todoList[i]);
-  }
-
-  const nums = [10, 20, 30];
-  nums[nums.length - 1] = 99;
-  console.log(nums);
-
-  const nums = [1, 2, 3];
-  let total = 0;
-
-  for (let i = 0; i < nums.length; i++) {
-    const num = nums[i];
-    total += num;
-  }
-  console.log(total);
-
-  const numsDoubled = [];
-  for (let i = 0; i < nums.length; i++) {
-    const num = nums[i];
-    numsDoubled.push(num * 2);
-  }
-</script>
-```
-
 ```js
-const todoList = ["make dinner", "wash dishes"];
-
-renderTodoList();
-
-function renderTodoList() {
-  let todoListHTML = "";
-
-  for (let i = 0; i < todoList.length; i++) {
-    const todo = todoList[i];
-    const html = `<p>${todo}</p>`;
-    todoListHTML += html;
-  }
-  console.log(todoListHTML);
-
-  document.querySelector(".js-todo-list").innerHTML = todoListHTML;
-}
-
-function addTodo() {
-  const inputElement = document.querySelector(".js-name-input");
-  const name = inputElement.value;
-
-  todoList.push(name);
-
-  inputElement.value = "";
-
-  renderTodoList();
-}
+window.console;
+window.document;
+window.alert;
 ```
-
-```html
-<script>
-  function minMax(nums) {
-    const result = { min: nums[0], max: nums[0] };
-
-    for (let i = 0; i < nums.length; i++) {
-      const value = nums[i];
-
-      if (value < result.min) {
-        result.min = value;
-      }
-
-      if (value > result.max) {
-        result.max = value;
-      }
-    }
-    return result;
-  }
-</script>
-```
-
-if we don’t want to change the original array, we can make a copy of array1 using `.slice()` method:
-
-```html
-//other ways to get the value from the array: const [firstValue, secondValue] =
-[1,2,3];
-```
-
-```js
-for (let i = 1; i <= 10; i++) {
-  if (i === 3) {
-    continue; // which can skip number 3
-  }
-  console.log(i);
-  if (i === 8) {
-    break; // which can stop the program
-  }
-}
-```
-
-# 11. setTimeout() setInterval()
-
-`setTimeout()`
-
-a feature allows us to run a function in the future.
-
-it will trigger asynchronous code:
-
-computer won’t wait for a line to finish before going to the next line.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      setTimeout(function () {
-        console.log("timeout");
-      }, 3000);
-    </script>
-  </body>
-</html>
-```
-
-`setInterval()`
-
-keep running the code for certain amount of time:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      setInterval(function () {
-        console.log("interval");
-      }, 3000);
-    </script>
-  </body>
-</html>
-```
-
-another way to loop through array
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      ["make dinner", "wash dishes", "watch youtube"].forEach(function (value) {
-        console.log(value);
-      });
-      ["make dinner", "wash dishes", "watch youtube"].forEach(function (v, i) {
-        console.log(v);
-        console.log(i);
-    </script>
-  </body>
-</html>
-```
-
-but in `forEach` style loop, we can only use `continue`, we can no longer use `break` to exit the loop.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      ["make dinner", "wash dishes", "watch youtube"].forEach(function (v, i) {
-        if (v === "wash dishes") {
-          return;
-        }
-        console.log(v);
-        console.log(i);
-      });
-    </script>
-  </body>
-</html>
-```
-
-# Arrow function
-
-mostly work the same way as normal function
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      const regularFunction = function () {
-        console.log("hello");
-      };
-
-      const arrowFunction = () => {
-        console.log("hello");
-      };
-
-      regularFunction();
-      arrowFunction();
-    </script>
-  </body>
-</html>
-```
-
-# .forEach()
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      function countPositive(nums) {
-        let positiveNumbers = 0;
-        nums.forEach((num) => {
-          if (num > 0) {
-            positiveNumbers++;
-          }
-        });
-        return positiveNumbers;
-      }
-    </script>
-  </body>
-</html>
-```
-
-# .addEventListener()
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <button onclick="" class="js-button">Click</button>
-
-    <script>
-      const buttonElement = document.querySelector(".js-button");
-
-      buttonElement.addEventListener("click", () => {
-        console.log("click");
-      });
-    </script>
-  </body>
-</html>
-```
-
-what is `.addEventListener()` advantages:
-
-1. multiple event listener for one event
-2. remove event listener
-
-   `.removeEventListener()`
-
-so we can have more control of the button compare with `onclick`
-
-### .filter() .map()
