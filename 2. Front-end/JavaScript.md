@@ -896,11 +896,31 @@ const [gold, silver, bronze] = raceResults;
 gold; // "Eliud"
 silver; // "Feyisa"
 bronze; // "Galen"
+```
 
-// we can also use ...to include others:
+we can also use ...to include others:
+
+```js
 const scores = [12312, 24234, 5345, 465345, 37356];
 const [gold, silver, bronze, ...everyoneElse] = scores;
-// here, everyoneElse: [465345, 37356]
+// everyoneElse: [465345, 37356]
+```
+
+We can also access the value at any index in an array with commas:
+
+```js
+const [a, b, , , c] = [1, 2, 3, 4, 5, 6];
+
+console.log(a, b, c); // 1, 2, 5
+```
+
+exchange the value:
+
+```js
+let a = 8,
+  b = 6;
+
+[a, b] = [b, a];
 ```
 
 ### 🌷 with object
@@ -921,8 +941,9 @@ console.log(lastName); // Doe
 console.log(born); // 1999
 ```
 
+we can also rename the variable when assignment:
+
 ```js
-// but we can also rename the variable:
 const person = {
   firstName: "John",
   lastName: "Doe",
@@ -932,6 +953,21 @@ const person = {
 const { born: birthYear } = person;
 
 console.log(birthYear); // 1999
+```
+
+Assign Variables from Nested Object:
+
+```js
+const user = {
+  johnDoe: {
+    age: 34,
+    email: "johnDoe@freeCodeCamp.com",
+  },
+};
+
+const {
+  johnDoe: { age, email },
+} = user;
 ```
 
 ### 🌷 with params
