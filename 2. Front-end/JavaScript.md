@@ -686,7 +686,6 @@ const greet = (x) => {
 };
 
 // arrow function without a parameter:
-
 const rollDie = () => {
   return Math.floor(Math.random() * 10) + 1;
 };
@@ -790,7 +789,7 @@ numbers.reduce((sum, num) => sum + num, 100); // here, we added 100 to it
 
 ## 8. arrow function & `this`
 
-🌷 **confusing here**:
+⭐️ **confusing here**:
 
 ```js
 const person = {
@@ -986,6 +985,288 @@ printFullName(person); // John Doe
 ```
 
 <br>
+
+# 💜 DOM
+
+<img src="../images/Front-end/dom.png" width="600" alt="dom">
+
+## 1. document
+
+The Document serves as an entry point into the web page's content. It represents all the content on the web page.
+
+`console.dir(document)` to see the directory of document.
+
+## 2. select from DOM
+
+### 🌷 `getElementById()`
+
+We are actually selecting the DOM object that with the specific id.
+
+### 🌷 `getElementsByTagName()` & `getElementsByClassName()`
+
+for example, we can get a HTML collection with this:
+`document.getElementsByTagName("img")`
+
+### 🌷 `querySelector()` & `querySelectorAll()`
+
+we can use all kinds of selectors here.
+
+## 3. manipulate DOM Elements
+
+### 🌷 `innerHTML` & `textContent` & `innerText`
+
+- `innerHTML` includes `tags`
+- `textContent` show all the text
+- `innerText` will hide the hidden text
+
+### 🌷 another way of accessing attribute `.getAttribute()`
+
+eg. `XXXXX.getAttribute("id")`
+
+`setAttribute()`:
+`XXXXX.setAttribute("href", "http://www.google.com")`
+
+## 4. change style
+
+the Element's style is empty, because it does not contain the CSS from the stylesheet, only contain the inline CSS.
+
+```js
+const h1 = document.querySelector("h1");
+h1.style.color; // ''  empty
+
+// but we can assign them with style:
+h1.style.color = "green";
+```
+
+this is not good.
+
+## 5. classList
+
+the better way to change the style is to add `classList`
+
+```js
+const h2 = document.querySelector("h2");
+h2.classList.add("purple");
+h2.classList.toggle("purple");
+```
+
+## 6. parentElement & childElement & sibling...
+
+## 7. create new DOM Elements
+
+`.createElement()`
+
+approach 1:
+
+`.appendChild()`
+
+```js
+const newImage = document.createElement("img");
+newImage.src = "xxxxxxx";
+document.body.appendChild(newImage);
+```
+
+approach 2:
+
+`append()`
+
+```js
+const p = document.querySelector("p");
+p.append("i am happyyyy");
+```
+
+## 8. `remove()`
+
+```js
+const image = document.querySelector("img");
+image.remove();
+```
+
+<br>
+
+# 💜 DOM Events
+
+## 1. add events
+
+### 🌷 inline events
+
+write directly in HTML:
+
+```html
+<button onclick="alert('you clicked me')">Click me</button>
+```
+
+neither convinient nor efficient.
+
+### 🌷 property
+
+writing in JS:
+
+```js
+const btn = document.querySelector("#v2");
+btn.onclick = function () {
+  console.log("you clicked me!");
+};
+
+document.querySelector("h1").onmouseover = () => {
+  alert("you clicked the h1!");
+};
+// we need a function reference to the event
+```
+
+> ⭐️ Cons: can only add one event handler per event element.
+
+### 🌷 addEventListener
+
+better approach of adding event
+
+```js
+const btn = document.querySelector("#v3");
+btn.addEventListener("click", () => {
+  alert("clicked");
+});
+```
+
+> ⭐️ Pros: It allows you to attach multiple event handlers to the same event on a single element. More flexible.
+
+## 2. event & `this` keyword
+
+```js
+const makeRandomColor = () => {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const buttons = document.querySelectorAll("button");
+for (let eachBtn of buttons) {
+  eachBtn.addEventListener("click", colorize);
+}
+
+const texts = document.querySelectorAll("#text");
+for (let text of texts) {
+  text.addEventListener("click", colorize);
+}
+
+// when a button is clicked, the colorize function is invoked, and "this" inside "colorize" refers to the button element that was clicked.
+function colorize() {
+  this.style.backgroundColor = makeRandomColor();
+}
+```
+
+## 3. event object & keyboard event
+
+event object is every event handler automaticlly have.
+
+```js
+const input = document.querySelector("input");
+input.addEventListener("keydown", function (e) {
+  console.log(e.key);
+  console.log(e.code);
+  //e.key and e.code can be different
+});
+```
+
+## 4. form events
+
+`submit` is the **_default_** feature of a form:
+to send data to where the `action` is. And automaticlly direct to that address.
+
+```html
+<form action="/cat"></form>
+```
+
+So if we want to stay at the same page when submitting, how to do that?
+
+👉 we can prevent this redirection by using `event.preventDefault` method!
+
+```js
+const form = document.querySelector("#catShelterForm");
+const input = document.querySelector("#inputName");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log(input.value);
+});
+```
+
+## 5. input & change events
+
+```js
+const input = document.querySelector("input");
+input.addEventListener("change", () => {
+  console.log(input.value);)
+```
+
+The `input` event is fired every time the value of the element changes. This is unlike the change event, which only fires when the value is committed, such as by pressing the enter key or selecting a value from a list of options:
+
+```js
+const input = document.querySelector("input");
+input.addEventListener("input", () => {
+  console.log(input.value);)
+```
+
+## 6. event bubbling
+
+bubbling is a default behavior of events on elements.
+
+```html
+<div>
+  <span>
+    <button>Click Me!</button>
+  </span>
+</div>
+```
+
+👆
+Due to event bubbling, when the `button` receives a `click` event, `span` and `div` will also receive the event.
+
+<img src="../images/Front-end/bubbling.png" alt="bubbling" widhth="600" />
+
+event object has a method to do this: `e.stopPropagation()`
+
+```js
+const button = document.querySelector("changeButtonColor");
+const container = document.querySelector("#container");
+button.addEventListener("click", function (e) {
+  container.style.backgroundColor = makeRandomColor();
+  e.stopPropagation();
+});
+container.addEventListener("click", function () {
+  container.classList.toggle("hide");
+});
+const makeRandomColor = () => {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+```
+
+## 7. event delegation
+
+based on bubbling.
+
+when we don't have elements on the page at the time, we can add eventListener to the parent element.
+
+```js
+//we're using event.target to get the element that was the target of the event (that is, the innermost element).
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
+
+function bgChange() {
+  const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  return rndCol;
+}
+
+const container = document.querySelector("#container");
+
+container.addEventListener("click", (event) => {
+  event.target.style.backgroundColor = bgChange();
+});
+```
+
 <br>
 <br>
 <br>
@@ -1045,14 +1326,6 @@ all variables are temporary, when refreshing the page, the storage will lost.
 
 Local storage will not clear the variables when refreshing, but **it only support strings:**
 
-# 9. DOM (built-in document object model)
+```
 
-the DOM combines JS and HTML together, and we can have HTML elements inside JS, HTML will converted to JS object. it gives control of JS to the webpage.
-
-**window (built-in object) ——the webpage**
-
-```js
-window.console;
-window.document;
-window.alert;
 ```
