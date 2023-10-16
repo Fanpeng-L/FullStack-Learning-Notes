@@ -1,13 +1,15 @@
-# FullStack-Learning-Notes
+# FullStack Web Dev Learning Notes
 
-This is the repo of my learning notes for full-stack web development.
+📝 This is the repo of my learning notes for full-stack web development.
 
-# 🌐 Intro
+# 🌷 Intro
 
 - [Internet](1.%20Intro/Internet.md)
 - [Web](1.%20Intro/Web.md)
 
-# 🌻 Front-end
+<br>
+
+# 🌷 Front-end
 
 ## 1. Basics
 
@@ -23,6 +25,7 @@ This is the repo of my learning notes for full-stack web development.
 
 - [React](2.%20Front-end/React.md)
 - Angular
+- Vue
 
 ## 3. Others
 
@@ -41,7 +44,9 @@ This is the repo of my learning notes for full-stack web development.
 - [Next.js](2.%20Front-end/Nextjs.md)
 - Static site generator
 
-# 🌻 Back-end
+<br>
+
+# 🌷 Back-end
 
 ## 1. Server-side Language
 
@@ -70,7 +75,9 @@ This is the repo of my learning notes for full-stack web development.
 - security
 - deployment
 
-# 🌻 Extra
+<br>
+
+# 🌷 Extra
 
 ## 1. Mobile
 
