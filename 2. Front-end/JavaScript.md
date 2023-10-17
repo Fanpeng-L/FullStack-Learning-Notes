@@ -231,6 +231,8 @@ switch (day) {
 }
 ```
 
+<br>
+
 # 💜 Array (data structure)
 
 ## 1. Array methods
@@ -1268,6 +1270,115 @@ container.addEventListener("click", (event) => {
 ```
 
 <br>
+
+# 💜 Async
+
+## 1. Call Stack
+
+Whenever the function is called, it is pushed onto the top of the call stack. The call stack follows the Last In, First Out (LIFO) principle.
+
+When a function completes its execution or returns a value, it's removed from the top of the call stack. The JavaScript engine then goes to the next function in the stack to execute.
+
+So, the last function that was added (the most recently called function) is the first to be executed.
+
+for example, here is a function that calls a square function, and square function that calls a multiply funciton:
+
+```js
+const multiply = (x, y) => x * y;
+const square = (x) => multiply(x, x);
+const isRightTriangle = (a, b, c) => square(a) + square(b) === square(c);
+```
+
+<img src="../images/Front-end/call stack.png" width="900" alt="call stack">
+we can use developer tool to know the call stack.
+
+## 2. single thread & WebAPIs
+
+JS is single threaded. (one line of code at one time.)
+
+However, Web APIs (Application Programming Interfaces) allow JS to handle asynchronous operations.
+
+```js
+// this line is run immediately:
+console.log("Sending request to server!");
+
+setTimeout(() => {
+  // When use setTimeout in JS, it doesn't block the main thread. Actually, the browser's web API, not JS, handle the `settimeout()` function, after 3 seconds, the browser moves the callback function (the function inside setTimeout) to the callback queue.
+  console.log("Here is your data from the server...");
+}, 3000);
+
+// This line is run immediately:
+console.log("I AM AT THE END OF THE FILE!");
+```
+
+## 3. `promise`
+
+structure:
+
+```js
+// THE CLEANEST OPTION WITH then/catch
+// RETURN A PROMISE FROM .THEN() CALLBACK
+fakeRequestPromise("yelp.com/api/coffee/page1")
+  .then((data) => {
+    console.log("IT WORKED!!!!!! (page1)");
+    console.log(data);
+    return fakeRequestPromise("yelp.com/api/coffee/page2");
+  })
+  .then((data) => {
+    console.log("IT WORKED!!!!!! (page2)");
+    console.log(data);
+    return fakeRequestPromise("yelp.com/api/coffee/page3");
+  })
+  .then((data) => {
+    console.log("IT WORKED!!!!!! (page3)");
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log("OH NO, A REQUEST FAILED!!!");
+    console.log(err);
+  });
+```
+
+⭐️ how to make promise:
+
+```js
+const fakeRequest = (url) => {
+  return new Promise((resovle, reject) => {
+    const rand = Math.random();
+    setTimeout(() => {
+      if (rand < 0.7) {
+        resovle("Here is the fake data: blahblah");
+      }
+      reject("request error");
+    }, 4000);
+  });
+};
+
+fakeRequest("/dogs")
+  .then((data) => {
+    console.log("Done, with request");
+    console.log("data is", data);
+  })
+  .catch((err) => {
+    console.log("oh no", err);
+  });
+```
+
+## 4. level up promise with `async` & `await`
+
+with `async` keyword, the function automaticly returns promise
+
+```js
+const sing = async () => {
+  return "la la la";
+};
+sing().then((data)=>{
+  console.log("problem resolved with:" data) // problem resolved with: la la la
+})
+```
+
+`await` replace the `then` keyword
+
 <br>
 <br>
 <br>
