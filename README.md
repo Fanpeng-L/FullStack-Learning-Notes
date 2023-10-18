@@ -19,7 +19,6 @@
   - [bootstrap](2.%20Front-end/bootstrap.md)
 - [JavaScript](2.%20Front-end/JavaScript.md)
   - [ES6](2.%20Front-end/ES6.md)
-- Git
 
 ## 2. Framework
 
@@ -33,6 +32,7 @@
 - [npm](2.%20Front-end/npm.md)
 - Markdown
 - [Terminal](/2.%20Front-end/terminal.md)
+- Git
 - HTTP clients
 - UI Design Principles
 - Design Tools
