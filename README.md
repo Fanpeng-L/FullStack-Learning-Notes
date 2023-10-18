@@ -32,7 +32,7 @@
 - TypeScript
 - [npm](2.%20Front-end/npm.md)
 - Markdown
-- Terminal
+- [Terminal](/2.%20Front-end/terminal.md)
 - HTTP clients
 - UI Design Principles
 - Design Tools
