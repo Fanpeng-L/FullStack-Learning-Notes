@@ -1380,6 +1380,120 @@ sing().then((data)=>{
 `await` replace the `then` keyword
 
 <br>
+
+# 💜 AJAX & APIs
+
+## 1. AJAX/AJAJ
+
+Asynchronous JavaScript and XML/JSON.
+
+It is a technique used in web development to send and receive data from a web server without needing to refresh the entire web page. It allows web pages to update parts of their content dynamically, in the background, without disrupting what you're currently doing on the page.
+
+## 2. API
+
+## 3. JSON
+
+`JSON.parse()`
+`JSON.stringify()`
+
+## 4. HTTP
+
+### 🌷 status codes:
+
+- 200 ok
+- 400 bad request
+- 401 unauthorized
+- 404 not found
+
+### 🌷 query strings
+
+eg. different endpoints:
+
+- `/people/` -- get all the people resources
+- `/people/:id/` -- get a specific people resource
+- `/people/schema/` -- view the JSON schema for this resource
+
+<img src="../images/Front-end/query string sytax.png" width="700">
+
+<img src="../images/Front-end/query strings.png" alt="query strings" width="700">
+
+### 🌷 headers
+
+some API needs headers when sending requests.
+
+## 5. fetch API
+
+```js
+fetch("https://swapi.dev/api/people1")
+  .then((res) => {
+    console.log("resovled", res);
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log("error!", err);
+  });
+```
+
+or with `async` function:
+
+```js
+const loadStarWarsPeople = async () => {
+  try {
+    const res = await fetch("https://swapi.dev/api/people/1/");
+    const data = await res.json();
+    console.log(data);
+    const res2 = await fetch("https://swapi.dev/api/people/2/");
+    const data2 = await res2.json();
+    console.log(data2);
+  } catch (e) {
+    console.log("error", e);
+  }
+};
+```
+
+## 6. Axios
+
+a library for making HTTP request
+
+```js
+axios
+  .get("https://swapi.dev/api/people/1/")
+  .then((res) => {
+    console.log("response:", res);
+  })
+  .catch((e) => {
+    console.log("error!", e);
+  });
+```
+
+with `async` function:
+
+```js
+const getStarWarsPerson = async () => {
+  try {
+    const res = await axios.get("https://swapi.dev/api/people/2/");
+    console.log(res.data);
+  } catch (e) {
+    console.log("error!", e);
+  }
+};
+
+getStarWarsPerson();
+```
+
+⭐️ set Headers with axios
+
+```js
+const dadJokes = async () => {
+  const config = { headers: { Accept: "application/json" } };
+  const res = await axios.get("https://icanhazdadjoke.com/", config);
+  console.log(res.data.joke);
+};
+```
+
 <br>
 <br>
 <br>
