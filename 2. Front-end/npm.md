@@ -1,13 +1,18 @@
-# JavaScript package manager (npm)
+Around 2010, several JavaScript package managers emerged to help 🦾automate🦾 the process of downloading and upgrading libraries from a central repository. npm has been most popular since around 2015. (around late 2016, yarn picked up a lot of attention)
 
-Starting around 2010, several JavaScript package managers emerged to help 🦾automate🦾 the process of downloading and upgrading libraries from a central repository. npm has been most popular since around 2015. (around late 2016, yarn picked up a lot of attention)
+# 💜 Basics
 
-> npm was originally a package manager made specifically for node.js, a JavaScript runtime designed to run on the server side, not the front end.
+## 1. install
 
-## 1. 🔨Use of npm:
+`npm i <package name>` install locally
 
-`$ npm init`  
-This will generate a file named `package.json`:
+`npm i -g <package name>` install globally
+
+## 2. `package.json`
+
+`$ npm init`
+
+It will ask a bunch of questions to set up, and then write a package.json file.
 
 ```json
 {
@@ -44,9 +49,3 @@ This command does two things: first, it downloads all the code from the moment.j
 ```
 
 Now, when sharing a project with others — instead of sharing the whole `node_modules` folder, you only need to share the `package.json` file and other developers can install the required packages with the command `npm install`.
-
-## 2. Transpiling code for new language features (babel)
-
-Transpiling code means converting the code in one language to code in another similar language. Browsers are slow to add new features, so new languages were created with experimental features that transpile to browser-compatible languages.
-
-For CSS, there’s Sass, Less, and Stylus, to name a few. For JavaScript, nowadays most people use **babel** or **TypeScript**.
