@@ -1495,6 +1495,92 @@ const dadJokes = async () => {
 ```
 
 <br>
+
+# 💜 Prototype, Class, OOP
+
+`__proto__` contains all the methods defined in the proto object. for example, every array copy has the access to the `push()` method that defined in `Array` prototype.
+
+## 1. constructor function
+
+```js
+function Color(r, g, b) {
+  this.r = r;
+  this.g = g;
+  this.b = b;
+}
+Color.prototype.rgb = function () {
+  const { r, g, b } = this;
+  return `rgb(${r}$,{g},${b})`;
+};
+Color.prototype.rgba = function (a = 1.0) {
+  const { r, g, b } = this;
+  return `rgb(${r}$,{g},${b}),${a}`;
+};
+
+const color1 = new Color(34, 65, 222);
+```
+
+## 2. class
+
+rewrite the above constructor:
+
+```js
+class Color {
+  constructor(r, g, b, name) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
+    this.name = name;
+  }
+  // create methods:
+  greet() {
+    return `Hello from color: ${this.name}`;
+  }
+}
+const color1 = new Color(75, 255, 148, "grass"); // Color {r: 75, g: 255, b: 148, name: 'grass'}
+```
+
+## 3. `extend` & `super`
+
+like parent and children:
+
+```js
+class Pet {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  eat() {
+    return `${this.name} is eating!`;
+  }
+}
+
+class Cat extends Pet {
+  construcor(name, age, livesleft = 9) {
+    super(name, age);
+    this.livesleft = livesleft;
+  }
+  meow() {
+    return "meow!!!";
+  }
+}
+
+class Dog extends Pet {
+  bark() {
+    return "woof!";
+  }
+}
+```
+
+👇
+
+⭐️ both Cat and Dog have access to Pet's methods.
+
+⭐️ if the children also have a same methods, it will executed rather than the parent's one.
+
+⭐️ super: it is like add-on to the parent's constructor.
+
+<br>
 <br>
 <br>
 <br>
