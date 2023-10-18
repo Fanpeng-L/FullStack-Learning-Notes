@@ -50,8 +50,8 @@
 
 ## 1. Server-side Language
 
-- Python
-- Node.js
+- [Python](/3.%20Back-end/Python.md)
+- [Node](/3.%20Back-end/Node.md)
 - Java
 
 ## 2. Framework
