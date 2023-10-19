@@ -21,3 +21,5 @@ So the whole process is like:
 # 3. HTTP
 
 ⭐️ HTTP not only fetch HTML results, it can also be used to fetch parts of documents to update Web pages on demand.
+
+[Read more: Introduction to HTTP ](https://launchschool.com/books/http)

@@ -32,7 +32,7 @@
 - [npm](2.%20Front-end/npm.md)
 - Markdown
 - [Terminal](/2.%20Front-end/terminal.md)
-- Git
+- [Git](2.%20Front-end/git.md)
 - HTTP clients
 - UI Design Principles
 - Design Tools
