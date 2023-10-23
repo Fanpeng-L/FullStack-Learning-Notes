@@ -1028,6 +1028,18 @@ eg. `XXXXX.getAttribute("id")`
 `setAttribute()`:
 `XXXXX.setAttribute("href", "http://www.google.com")`
 
+### 🌷 Node VS. Elements
+
+**Node**
+
+- A "node" is a generic term for any individual object within the DOM tree.
+- All elements, attributes, and text within an HTML document are nodes.
+
+**Element**
+
+- An "element" is a specific type of node in the DOM that represents HTML elements such as `<div>, <p>, <a>`, etc.
+- Elements have unique characteristics, such as tag names, attributes, and methods.
+
 ## 4. change style
 
 the Element's style is empty, because it does not contain the CSS from the stylesheet, only contain the inline CSS.
