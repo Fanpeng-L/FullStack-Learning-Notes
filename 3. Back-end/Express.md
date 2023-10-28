@@ -4,4 +4,6 @@
 
 # Install
 
-`npm init -y`
+`npm init -y` create basic `package.json`
+
+`npm i express`
