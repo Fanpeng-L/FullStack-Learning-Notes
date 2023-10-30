@@ -26,3 +26,14 @@ export const getFullName = (firstname, lastName) => {
 import { getFullName } from "./utils.mjs";
 console.log(getFullName("John", "Doe")); // My fullname is John Doe
 ```
+
+# 4. Files
+
+read files:
+
+```js
+const fs = require("fs");
+
+const textIn = fs.readFileSync("./txt/input.txt", "utf-8");
+console.log(textIn);
+```
