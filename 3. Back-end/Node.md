@@ -29,11 +29,66 @@ console.log(getFullName("John", "Doe")); // My fullname is John Doe
 
 # 4. Files
 
-read files:
+sync way of read files:
 
 ```js
 const fs = require("fs");
 
 const textIn = fs.readFileSync("./txt/input.txt", "utf-8");
 console.log(textIn);
+```
+
+write files:
+
+`fs.writeFileSync( file, data, options )`
+
+# 5. synchronous vs. asynchronous
+
+<img src="../images/Back-end/async:unblocking.png" width="500">
+
+async way of reading file:
+
+```js
+fs.readFile("./txt/start.txt", "utf-8", (err, data) => {
+  console.log(data);
+});
+console.log("Will read file"); // this line will run first
+```
+
+# 6. HTTP building server
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.end("Hello from the server");
+});
+
+server.listen(3000, () => {
+  console.log("listening to requests on port 3000");
+});
+```
+
+# 7. route
+
+here, we are using basic node to create route:
+
+```js
+const path = require("url");
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  const pathName = req.url;
+  if (pathName === "/" || pathName === "/overview") {
+    res.end("Hello from the server");
+  } else if (pathName === "/product") {
+    res.end("This is the product");
+  } else {
+    res.end("Page not found");
+  }
+});
+
+server.listen(3000, () => {
+  console.log("listening to requests on port 3000");
+});
 ```
