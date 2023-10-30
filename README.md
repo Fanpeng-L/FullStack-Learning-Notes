@@ -58,16 +58,16 @@
 
 - Django
 - [Express](3.%20Back-end/Express.md)
-- Sprintboot
+- Springboot
 
 ## 3. Database
 
-- Relational
-- Non-relational
+- SQL
+- [No-SQL](./3.%20Back-end/nosql.md)
 
 ## 4. API
 
-- REST
+- [REST](3.%20Back-end/REST.md)
 - Graphql
 
 ## 5. Others
