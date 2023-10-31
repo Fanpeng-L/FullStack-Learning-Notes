@@ -50,8 +50,62 @@ update many:
 
 object data mapper
 
-Solving mongoose.connect issues
-If you are using the latest versions of Node.js with mongoose, and you get a connection refused ECONNREFUSED error message when connecting your app to the database, then you might need to change localhost to 127.0.0.1 in your mongoose.connect database connection string:
+node -i -e "$(< index.js)"
 
-mongoose.connect('mongodb://127.0.0.1:27017/your_database_name_here')
-Also, in the currently newest mongoose versions you don't need to pass the options object as the second argument to the mongoose.connect method.
+```js
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://127.0.0.1:27017/movieApp");
+
+main().catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+}
+
+// define schema:
+const movieSchema = new mongoose.Schema({
+  title: String,
+  year: Number,
+  score: Number,
+  rating: String,
+});
+
+const Movie = mongoose.model("Movie", movieSchema);
+
+// creating movies
+const amadeus = new Movie({
+  title: "Amadeus",
+  year: 1986,
+  score: 9.2,
+  rating: "R",
+});
+
+amadeus.save();
+
+// another way of adding movies:
+Movie.insertMany([
+  { title: "Alien", year: 1979, score: 8.1, rating: "R" },
+  { title: "Stand By Me", year: 1986, score: 8.6, rating: "R" },
+]);
+```
+
+define schema with validation🔐:
+
+```js
+const movieSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: 20,
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  onShow: {
+    type: Boolean,
+    default: false,
+  },
+});
+```
