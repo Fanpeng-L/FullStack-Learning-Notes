@@ -67,3 +67,30 @@ app.listen(3000, () => {
   console.log("App is serving on port 3000");
 });
 ```
+
+# error handling
+
+**Define our own error handler:**
+
+like other middleware, but with 4 arguments:
+
+```js
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something wrong");
+});
+```
+
+### 🌷 define error class
+
+```js
+class AppError extends Error {
+  constructor(message, status) {
+    super();
+    this.message = message;
+    this.status = status;
+  }
+}
+
+module.exports = AppError;
+```
