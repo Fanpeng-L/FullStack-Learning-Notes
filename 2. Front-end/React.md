@@ -1,150 +1,106 @@
-# React
-
 > React is a declarative UI library. JS (imperative) is like telling the cook to "Knit the dough, roll the dough, add tomato sauce, add cheese, add ham, add pineapple, bake at 200 degrees Celsius in a stone oven for...”. But React is like to tell the cook: “A Hawaiian pizza please!”
 
-## Index
-
-1. Building UI with Components
-2. Props
-
 <br>
 
-### 1. Building UI with Components
+# 1. Components
 
-In React, components are functions that return UI elements. The component should be capitalised.
+Syntax:
 
 ```jsx
-<script type="text/jsx">
-  const app = document.getElementById("app")
-  function Header() {
-     return (<h1>Develop. Preview. Ship. 🚀</h1>)
-   }
+function Header() {
+  return <h1>i am a header component</h1>;
+}
 
-   ReactDOM.render(<Header />, app)
-</script>
+export default Header;
 ```
 
+One component Can only return one Single Top level element.
+
 <br>
 
-### 2. Props
+# 2. JSX
 
-Like the attributes in HTML, we can pass information as properties to components. Then, these props can pass from parent components to child components.  
-Here, we pass `title` as props from `HomePage` to `Header`:
+use `{}` to add JavaScript logic or reference a dynamic property:
 
 ```jsx
-function HomePage() {
+function Dog(){
+  return <p> {3 + 5}</P>
+}
+```
+
+# 3. Style in React
+
+- `className` to add class
+- same stylesheet name as the component.
+
+⭐️ webpack help us bundle the css with the file
+
+# 4. Props
+
+```jsx
+<Greet name="John" />
+ <Avatar
+      person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }}
+      size={100}
+    />
+```
+
+# 5. conditional logic
+
+```jsx
+export default function RollDice() {
+  const num1 = Math.floor(Math.random() * 3) + 1;
+  const num2 = Math.floor(Math.random() * 3) + 1;
+
   return (
     <div>
-      <Header title="React 💙" />
+      <h2>Roll the dice</h2>
+      // only show the h3 when num1 === num2
+      {num1 === num2 && <h3>You win!</h3>}
+      <p>Num1: {num1}</p>
+      <p>Num1: {num2}</p>
     </div>
   );
 }
 ```
 
-if we `console.log` the props, we can see that the props is object with a `title` property:
-
-```jsx
-function Header(props) {
-  console.log(props); // { title: "React 💙" }
-}
-
-function HomePage() {
-  return (
-    <div>
-      <Header title="React 💙" />
-    </div>
-  );
-}
-ReactDOM.render(<HomePage />, app);
-```
-
-So object destructuring can be used, also use curly braces {} to write regular JavaScript directly inside JSX markup:
-
-```jsx
-function Header({ title }) {
-    console.log(title) // "React 💙"
-return <h1>{title}</h1>;
-```
-
 <br>
 
-### 3. Iterate in an array and arrow function
+# 6. maping array
 
 ```jsx
-function HomePage() {
-  const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
-
+export default function Colors({ colors }) {
   return (
     <div>
-      <Header title="Develop. Preview. Ship. 🚀" />
+      <p>Color List</p>
       <ul>
-        {names.map((name) => (
-          <li key={name}>{name}</li>
-        ))}
+        {colors.map((color) => {
+          <li>{color}</li>;
+        })}
       </ul>
     </div>
   );
 }
 ```
 
-👆 Here, a key is needed to identify the unique items in an array.
-
 <br>
 
-### 4. Event Handler
-
-- Listen to events: (event names are camelCased)
+# 7. Event
 
 ```jsx
-function HomePage() {
-  // ...
+function handleClick() {
+  console.log("Clicked!");
+}
+
+export default function Clicker() {
   return (
     <div>
-      {/* ... */}
-      <button onClick={}>Like</button>
+      <p>Click the button</p>
+      <button onClick={handleClick}>Click</button>
     </div>
   );
 }
 ```
-
-- handle event:
-
-```jsx
-function HomePage() {
-  // ...
-
-  function handleClick() {
-    console.log("increment like count")
-  }
-
-  return (
-    <div>
-      {/* ... */}
-      <button onClick={}>Like</button>
-    </div>
-     )
-   }
-```
-
-- call the handle:
-
-```jsx
-function HomePage() {
-  //    ...
-  function handleClick() {
-    console.log("increment like count");
-  }
-
-  return (
-    <div>
-      {/* ... */}
-      <button onClick={handleClick}>Like</button>
-    </div>
-  );
-}
-```
-
-<br>
 
 ### 5. State
 
