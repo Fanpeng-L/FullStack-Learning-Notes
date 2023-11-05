@@ -92,19 +92,23 @@ function handleClick() {
   console.log("Clicked!");
 }
 
+function handleHover() {
+  console.log("Hovered!");
+}
+
 export default function Clicker() {
   return (
     <div>
-      <p>Click the button</p>
+      <p onMouseOver={handleHover}>Click the button</p>
       <button onClick={handleClick}>Click</button>
     </div>
   );
 }
 ```
 
-### 5. State
+# 8. State
 
-`useState()` returns an array, so we can access the array values with array destructuring:
+`useState()` returns an array.
 
 ```jsx
 function HomePage() {
@@ -113,23 +117,99 @@ function HomePage() {
 ```
 
 ```jsx
-function HomePage() {
-  // ...
-  const [likes, setLikes] = React.useState(0);
-
-  function handleClick() {
-    setLikes(likes + 1);
+export default function Toggler() {
+  const [happy, setHappy] = useState(true);
+  //  use a function to change the set state:
+  function changeFace() {
+    setHappy(!happy);
   }
 
   return (
     <div>
-      {/* ... */}
-      <button onClick={handleClick}>Likes ({likes})</button>
+      <h1>{happy ? "😊" : "😢"}</h1>
+      <button onClick={changeFace}>Click me</button>
     </div>
   );
 }
 ```
 
-💡Props is read-only information that's passed to components. State is information that can change over time, usually triggered by user interaction.
+# 9. React lifecycle
 
-### 6.
+To update state based on current/previous value, We use callback functions:
+
+```jsx
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  const addThree = () => {
+    setCount((currentCount) => currentCount + 1);
+    setCount((currentCount) => currentCount + 1);
+    setCount((currentCount) => currentCount + 1);
+  };
+  return (
+    <div>
+      <p onClick={addThree}>{count}</p>
+    </div>
+  );
+}
+```
+
+# 10. update object & array in state
+
+we cannot direct update object value in the state. Because object/array are mutable, the reference did not change in memory. So, we need to create a copy (we can use spread operator `{...obj}` to copy)
+
+```jsx
+export default function ScoreKeeper() {
+  const [score, setScores] = useState({ p1Score: 0, p2Score: 0 });
+  const addScore1 = () => {
+    setScores((oldscore) => ({ ...oldscore, p1Score: oldscore.p1Score + 1 }));
+  };
+  const addScore2 = () => {
+    setScores((oldscore) => ({ ...oldscore, p2Score: oldscore.p2Score + 1 }));
+  };
+  return (
+    <div>
+      <h1>Play 1: {score.p1Score}</h1>
+      <h1>Play 2: {score.p2Score}</h1>
+      <button onClick={addScore1}>Play 1 add 1 Score</button>
+      <button onClick={addScore2}>Play 2 add 1 Score</button>
+    </div>
+  );
+}
+```
+
+add and delete from array: make copy first, avoid mutate the array
+
+[⭐️ See React Docs](https://react.dev/learn/updating-arrays-in-state)
+
+`filter` & `id`
+
+```jsx
+//adding to array:
+[...shoppingCart, { id: 4, product: "milk", price: 7.99 }];
+
+//delete an element:
+shoppingCart.filter((item) => item.id !== 2);
+```
+
+update all element in an array:
+
+`map`
+
+```jsx
+shoppingCart.map((item) => ({
+  ...item,
+  price: item.price * 0.8,
+}));
+```
+
+change one element in array:
+
+```jsx
+shoppingCart.map((item) => {
+  if (item.id === 3) {
+    return { ...item, price: 5.99 };
+  } else {
+    return item;
+  }
+});
+```
