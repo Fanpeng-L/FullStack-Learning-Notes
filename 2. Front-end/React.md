@@ -213,3 +213,12 @@ shoppingCart.map((item) => {
   }
 });
 ```
+
+# 11. state design principle
+
+> Lift state as high as needed. But not higher.
+> State cannot pass up.
+
+<img src="../images/Front-end/react component design.png" width="500">
+
+<img src="../images/Front-end/react component data flow.png" width="500">
