@@ -222,3 +222,9 @@ shoppingCart.map((item) => {
 <img src="../images/Front-end/react component design.png" width="500">
 
 <img src="../images/Front-end/react component data flow.png" width="500">
+
+# 12. useEffect
+
+`useEffect(callbackFunc, [product, userId])`
+
+<img src="../images/Front-end/useEffect argument.png" width="700">
