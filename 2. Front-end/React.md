@@ -1,5 +1,9 @@
 > React is a declarative UI library. JS (imperative) is like telling the cook to "Knit the dough, roll the dough, add tomato sauce, add cheese, add ham, add pineapple, bake at 200 degrees Celsius in a stone oven for...”. But React is like to tell the cook: “A Hawaiian pizza please!”
 
+What is declarative?
+
+<img src="../images/Front-end/declarative.png" width="600">
+
 <br>
 
 # 1. Components
@@ -107,6 +111,8 @@ export default function Clicker() {
 ```
 
 # 8. State
+
+<img src="../images/Front-end/state-driven.png" width="600">
 
 `useState()` returns an array.
 
