@@ -8,6 +8,10 @@ What is declarative?
 
 # 1. Components
 
+component tree:
+
+<img src="../images/Front-end/component tree.png" width="600">
+
 Syntax:
 
 ```jsx
