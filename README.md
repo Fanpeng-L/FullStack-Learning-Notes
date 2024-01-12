@@ -28,7 +28,7 @@
 
 ## 3. Others
 
-- TypeScript
+- [TypeScript](/2.%20Front-end/TypeScript.md)
 - [npm](2.%20Front-end/npm.md)
 - Markdown
 - [Terminal](/2.%20Front-end/terminal.md)
