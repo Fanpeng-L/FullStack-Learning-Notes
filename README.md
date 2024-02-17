@@ -52,7 +52,7 @@
 
 - [Python](/3.%20Back-end/Python.md)
 - [Node](/3.%20Back-end/Node.md)
-- Java
+- [Java](/3.%20Back-end/Java.md)
 
 ## 2. Framework
 
