@@ -1,5 +1,11 @@
 <img src="../images/Back-end/JavaCompile.png" width=800 />
 
+<img src="../images/Back-end/jdk.png" width=800 />
+
+<img src="../images/Back-end/data type.png" width=800 />
+
+<img src="../images/Back-end/primitive vs reference.png" width=800 />
+
 <br>
 
 # variables
