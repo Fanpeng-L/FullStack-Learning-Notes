@@ -351,12 +351,16 @@ String[][] cars = {
 
 # wrapper class
 
-a way to use primitive types as reference types, because reference data types contain useful methods, and can be used with collections
+a way to use primitive types as **reference** types, because reference data types contain useful methods, and can be used with collections
 
 primitive--------------wrapper
+
 boolean----------------Boolean
+
 char-------------------Character
+
 int--------------------Integer
+
 double-----------------Double
 
 ```java
@@ -399,3 +403,166 @@ public class Main {
 ```
 
 # 2D ArrayList
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<ArrayList<String>> groceryList = new ArrayList<>();
+
+        ArrayList<String> bakeryList = new ArrayList<>();
+        bakeryList.add("pasta");
+        bakeryList.add("garlic bread");
+        bakeryList.add("donuts");
+
+        ArrayList<String> vegeList = new ArrayList<>();
+        vegeList.add("tomato");
+        vegeList.add("carrot");
+
+        groceryList.add(bakeryList);
+        groceryList.add(vegeList);
+        System.out.println(groceryList);
+        System.out.println(groceryList.get(0));
+        System.out.println(groceryList.get(0).get(0));
+    }
+}
+```
+
+# for each
+
+iterate elements in an array/collection, less steps than for loop, but less flexible
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+//        String[] animals = {"cat", "dog", "rat", "bird"};
+        ArrayList<String> animals = new ArrayList<String>();
+
+        animals.add("cat");
+        animals.add("dog");
+        animals.add("rat");
+        animals.add("bird");
+
+
+        for (String i : animals) {
+            System.out.println(i);
+
+        }
+    }
+}
+```
+
+# customize methods
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String name = "fanpeng";
+        hello(name);
+    }
+
+   static void hello(String title) {
+        System.out.println("hello " + title);
+    }
+
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String name = "fanpeng";
+        int age = 21;
+        hello(name, age);
+    }
+
+   static void hello(String title, int age) {
+        System.out.println("hello " + title);
+       System.out.println("You are " + age );
+    }
+
+}
+```
+
+```java
+
+public class Main {
+    public static void main(String[] args) {
+        int x = 3;
+        int y = 4;
+        System.out.println(add(x, y));
+    }
+
+    static int add(int x, int y) {
+        return x + y;
+    }
+
+}
+```
+
+# overloaded methods
+
+methods that have the same name but have different parameters
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int total = add(1, 3, 5);
+        System.out.println(total);
+    }
+
+    static int add(int a, int b) {
+        System.out.println("this is overloaded method 1");
+        return a + b;
+    }
+
+    static int add(int a, int b, int c) {
+        System.out.println("this is overloaded method 2");
+        return a + b + c;
+    }
+
+    static int add(int a, int b, int c, int d) {
+        System.out.println("this is overloaded method 3");
+        return a + b + c + d;
+    }
+}
+```
+
+# printf() method
+
+2 arguments: format string + (object/variable/value)
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.printf("this is a format string %d", 123); // this is a format string 123
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        boolean myBoolean = true;
+        char myChar = '@';
+        String myString = "Fanpeng";
+        int myInt = 50;
+        double myDouble = 1000;
+
+        System.out.printf("%b 👈here is the result", myBoolean);
+        System.out.printf("%c 👈", myChar);
+
+        //can also set width:
+        System.out.printf("%10c 👈", myChar);
+        //can also set the precision of float and double:
+        System.out.printf("%.2f", myDouble);
+        // display positive or negetive number:
+        System.out.printf("You have this much money: %+f", myDouble);
+        // group separator for numbers:
+
+    }
+}
+```
