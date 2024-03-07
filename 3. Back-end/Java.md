@@ -566,3 +566,95 @@ public class Main {
     }
 }
 ```
+
+# final keyword
+
+assign variable cannot be changed later
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        final double PI = 3.14159;
+        System.out.println(PI);
+    }
+}
+```
+
+# OOP
+
+```java
+public class Car {
+    String make = "Chevrolet";
+    String model = "Corvette";
+    int year = 2023;
+    String color = "blue";
+    double price = 50000.00;
+
+    void drive(){
+        System.out.println("you drive the car");
+    }
+    void brake(){
+        System.out.println("you step on the brakes");
+    }
+}
+```
+
+# constructors
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Human human1 = new Human("Rick", 65,70);
+        System.out.println(human1.age);
+
+        Human human2 = new Human("Lisa", 20, 60);
+        System.out.println(human2.name);
+
+        human2.eat();
+        human1.drink();
+    }
+}
+
+import org.w3c.dom.ls.LSOutput;
+
+public class Human {
+    String name;
+    int age;
+    double weight;
+    Human(String name, int age, double weight){
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+    }
+
+    // method:
+    void eat(){
+        System.out.println(this.name+ " is eating");
+    }
+    void drink(){
+        System.out.println(this.name+ " is drinking");
+    }
+}
+```
+
+# local & global
+
+local: declared inside a method,
+global: declared outside of a method, but within a class visible to all parts of a class
+
+```java
+import java.util.Random;
+
+public class Dice {
+
+    Dice(){
+        Random random = new Random();
+        int number = 0;
+        roll(random, number);
+    }
+    void roll(Random random, int number){
+        number = random.nextInt(6)+1;
+        System.out.println(number);
+    }
+}
+```
