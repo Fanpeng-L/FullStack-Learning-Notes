@@ -724,3 +724,336 @@ public class Car {
     }
 }
 ```
+
+# array of objects
+
+first way:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // array of Food objects called fridge, hold 3 elements:
+        Food[] fridge = new Food[3];
+
+        Food food1  = new Food("pizza");
+        Food food2  = new Food("cream");
+        Food food3  = new Food("hotdog");
+
+        fridge[0] = food1;
+        fridge[1] = food2;
+        fridge[2] = food3;
+
+        System.out.println(fridge[0].name);
+        System.out.println(fridge[1].name);
+        System.out.println(fridge[2].name);
+    }
+}
+```
+
+another way:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Food food1  = new Food("pizza");
+        Food food2  = new Food("cream");
+        Food food3  = new Food("hotdog");
+
+        Food[] fridge = {food1, food2, food3};
+
+        System.out.println(fridge[0].name);
+        System.out.println(fridge[1].name);
+        System.out.println(fridge[2].name);
+    }
+}
+```
+
+# object passing
+
+pass object as argument
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        //create an instance of Garage object:
+        Garage garage = new Garage();
+
+        Car car1 = new Car("BMW");
+        Car car2 = new Car("Tesla");
+
+        garage.park(car1);
+        garage.park(car2);
+    }
+}
+
+
+public class Garage {
+
+    void park(Car car1){
+        System.out.println(car1.name + " is parking in the garage.");
+    }
+}
+
+
+
+public class Car {
+    String name;
+
+    Car(String name) {
+        this.name = name;
+    }
+}
+```
+
+# static keyword
+
+(class variable)
+
+used to declare members (variables and methods) that belong to the class itself, rather than to instances (objects) of the class.
+
+static variable & static method
+
+```java
+public class Friend {
+    String name;
+    static int numberOfFriends;
+
+    Friend(String name){
+        this.name = name;
+        numberOfFriends++;
+    }
+
+      static void displayFriends(){
+        System.out.println("You have "+numberOfFriends+" friends");
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        Friend friend1 = new Friend("Lisa");
+        Friend friend2 = new Friend("Bob");
+        Friend friend3 = new Friend("John");
+
+        System.out.println(Friend.numberOfFriends);
+
+        Friend.displayFriends();
+    }
+}
+```
+
+static vs instance
+
+```java
+public class MyClass {
+    static int staticVar; // Static variable
+    int instanceVar; // Instance variable
+
+    public static void main(String[] args) {
+        MyClass.staticVar = 10; // Accessing static variable directly
+
+        MyClass obj1 = new MyClass();
+        MyClass obj2 = new MyClass();
+
+        obj1.instanceVar = 20; // Accessing instance variable through object
+        obj2.instanceVar = 30; // Accessing instance variable through object
+    }
+}
+```
+
+# inheritance
+
+one class receive attributes and methods from another class.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car();
+
+        car.go();
+
+        Bicycle bike = new Bicycle();
+
+        bike.stop();
+
+        System.out.println("It has " + car.doors + " doors.");
+    }
+}
+
+
+
+public class Vehicle {
+    double speed;
+
+     void go(){
+        System.out.println("The vehicle is moving.");
+    }
+    void stop(){
+        System.out.println("The vehicle stopped.");
+    }
+}
+
+
+public class Bicycle extends Vehicle {
+    // receive attributes and methods from Vehicle
+
+    // has its own unique attributes
+    int wheels = 2;
+    int pedals = 2;
+}
+
+
+public class Car extends Vehicle {
+
+    // has its own unique attributes
+    int wheels = 4;
+    int doors = 4;
+}
+```
+
+# method overriding
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Dog dog = new Dog();
+        dog.speak(); // bark bark
+
+        Animal animal = new Animal();
+        animal.speak(); // the animal is speaking.
+        // they will use the closest method
+    }
+}
+
+
+
+public class Animal {
+
+    void speak() {
+        System.out.println("the animal is speaking.");
+    }
+}
+
+
+public class Dog extends Animal {
+
+    //overriding the method from Animal:
+    @Override
+    void speak() {
+        System.out.println("bark bark");
+    }
+
+}
+```
+
+# super keyword
+
+superclass(parent) of an object, similar to "this" keyword
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Hero hero1 = new Hero("Batman", 42, "$$$");
+        Hero hero2 = new Hero("Spiderman", 30, "fly");
+
+        System.out.println(hero1.name + " " + hero1.age + " " + hero1.power);
+        System.out.println(hero2.name + " " + hero2.age + " " + hero2.power);
+
+        System.out.println(hero2.toString());
+    }
+}
+
+
+public class Person {
+    String name;
+    int age;
+
+    Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String toString() {
+        return this.name + "\n" + this.age + "\n";
+    }
+}
+
+
+public class Hero extends Person {
+    String power;
+
+    Hero(String name, int age, String power) {
+        super(name, age);
+        this.power = power;
+    }
+
+    public String toString() {
+        return super.toString()+this.power;
+    }
+}
+```
+
+# abstraction
+
+Abstract Classes:
+
+a class that cannot be instantiated on its own. It serves as a blueprint for other classes to extend from.
+
+Abstract classes may contain both regular (concrete) methods with implementations and abstract methods without implementations.
+
+Abstract Methods:
+
+a method declared without an implementation (body). It provides a signature (name and parameters) but no actual code.
+
+```java
+// Animal is an abstract class
+abstract class Animal {
+    abstract void makeSound(); // Abstract method, can only be implemented in child classes
+
+void eat() {
+    System.out.println("Animal is eating");
+} // regular method
+}
+
+class Dog extends Animal {
+    @Override // it is forced to override in the child Dog class
+    void makeSound() {
+        System.out.println("Dog barks");
+}
+}
+
+class Cat extends Animal {
+    @Override // it is forced to override in the child Cat class
+    void makeSound() {
+        System.out.println("Cat meows");
+}
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.makeSound(); // Output: Dog barks
+        dog.eat(); // Output: Animal is eating
+
+        Cat cat = new Cat();
+        cat.makeSound(); // Output: Cat meows
+        cat.eat();       // Output: Animal is eating
+    }
+
+}
+```
+
+# access modifier
+
+public, protected, private
+
+```java
+
+```
