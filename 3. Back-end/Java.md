@@ -658,3 +658,69 @@ public class Dice {
     }
 }
 ```
+
+# overloaded constructor
+
+it allows to create objects in different ways. For example, one constructor might require only one parameter, while another might require two or more.
+
+```java
+public class Pizza {
+    String bread;
+    String sauce;
+    String cheese;
+    String topping;
+
+    Pizza(String bread, String sauce) {
+        this.bread = bread;
+        this.sauce = sauce;
+    }
+    Pizza(String bread, String sauce, String cheese) {
+        this.bread = bread;
+        this.sauce = sauce;
+        this.cheese = cheese;
+    }
+    Pizza(String bread, String sauce, String cheese, String topping) {
+        this.bread = bread;
+        this.sauce = sauce;
+        this.cheese = cheese;
+        this.topping = topping;
+    }
+}
+```
+
+# toString()
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car();
+        System.out.println(car); //Car@30f39991   the address in the memory
+    }
+}
+```
+
+usage: return the string representation of attributes of the object:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car();
+        System.out.println(car.toString());
+    }
+}
+
+
+public class Car {
+    String make = "Chevrolet";
+    String model = "Corvette";
+    int year = 2023;
+    String color = "blue";
+    double price = 50000.00;
+
+    public String toString() {
+        return make + "\n"+model+"\n"+color+"\n"+year;
+    }
+}
+```
