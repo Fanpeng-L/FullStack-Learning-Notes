@@ -1251,3 +1251,239 @@ public class Car {
     }
 }
 ```
+
+# interface
+
+a template applied to a class
+
+class can apply more than 1 interface, but only 1 inheritance
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Rabbit rabbit = new Rabbit();
+        rabbit.flee();
+
+        Hawk hawk = new Hawk();
+        hawk.hunt();
+
+        Fish fish = new Fish();
+        fish.flee();
+        fish.hunt();
+    }
+}
+
+
+
+public interface Prey {
+    void flee(); // no method body needed
+}
+
+
+public interface Predator {
+    void hunt();
+}
+
+
+public class Rabbit implements Prey {
+
+    @Override
+    public void flee() {
+        System.out.println("The rabbit is fleeing.");
+    }
+}
+
+
+public class Hawk implements Predator {
+    @Override
+    public void hunt() {
+        System.out.println("The hawk is hunting.");
+    }
+}
+
+//Here, Fish class use 2 interface
+public class Fish implements Prey, Predator{
+    @Override
+    public void hunt() {
+        System.out.println("This fish is hunting a small fish.");
+    }
+
+    @Override
+    public void flee() {
+        System.out.println("This fish is fleeing from a large fish.");
+    }
+}
+```
+
+# polymorphism
+
+an object been identified as more than one data type.
+
+Here, car, bicycle, boat are both themselves type (car, bicycle and boat) and also a Vehicle type:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car();
+        Bicycle bicycle = new Bicycle();
+        Boat boat = new Boat();
+
+        Vehicle[] racers = {car, bicycle, boat};
+
+        for (Vehicle x : racers) {
+            x.go();
+        }
+    }
+}
+
+public class Vehicle {
+    public void go(){
+        System.out.println("the car is moving.");
+    }
+}
+
+
+public class Car extends Vehicle {
+    @Override
+    public void go(){
+        System.out.println("the car is moving.");
+    }
+}
+
+
+
+public class Bicycle extends Vehicle {
+    @Override
+    public void go(){
+        System.out.println("the bicycle is moving.");
+    }
+}
+
+
+public class Boat extends Vehicle {
+    @Override
+    public void go(){
+        System.out.println("the boat is moving.");
+    }
+}
+```
+
+# dynamic polymorphism
+
+dynamic: means after the compile (during runtime)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        Animal animal; // create an Animal class but let the user customize the animal type later.
+
+        System.out.println("What animal do you want?");
+        System.out.print("1=Cat, 2=Dog: ");
+        int choice = scanner.nextInt();
+
+        if(choice==1) {
+            animal = new Cat();
+            animal.speak();
+        }
+        else if(choice==2) {
+            animal = new Dog();
+            animal.speak();
+        }
+        else {
+            animal = new Animal();
+            System.out.println("That choice is not correct. ");
+            animal.speak();
+        }
+    }
+}
+
+
+public class Animal {
+    public void speak() {
+        System.out.println("animal is speaking");
+    }
+}
+
+
+public class Cat extends Animal {
+    @Override
+    public void speak() {
+        System.out.println("meow");
+    }
+}
+
+
+public class Dog extends Animal {
+    @Override
+    public void speak() {
+        System.out.println("bark");
+    }
+}
+```
+
+# exception
+
+"try catch finally" block
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Enter a whole number: ");
+            int x = scanner.nextInt();
+
+            System.out.println("Enter a whole number to be divided: ");
+            int y = scanner.nextInt();
+
+            int z = x / y;
+
+            System.out.println("result: " + z);
+        } catch (ArithmeticException e) {
+            System.out.println("You cannot divide by 0");
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number!");
+        } catch (Exception e) {
+            System.out.println("Something went wrong");
+        } finally {
+            System.out.println("this block will always print.");
+            scanner.close(); // good practise to close scanner and files at the end.
+        }
+    }
+}
+```
+
+# file class
+
+an abstract representation of a file and directory pathnames
+
+```java
+import java.io.File;
+
+public class Main {
+    public static void main(String[] args) {
+
+        File file = new File("message.txt");
+
+        if(file.exists()) {
+            System.out.println("The file exists.");
+            System.out.println(file.getPath());
+            System.out.println(file.getAbsolutePath());
+            System.out.println(file.isFile());
+            file.delete();
+        }
+        else {
+            System.out.println("the file does not exists.");
+        }
+    }
+}
+```
