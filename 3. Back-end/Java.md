@@ -1487,3 +1487,237 @@ public class Main {
     }
 }
 ```
+
+# FileWriter
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+
+        try {
+            FileWriter writer = new FileWriter("poem.txt");
+            writer.write("Roses are red.\nhappy days");
+            writer.append("\nbirds are singing");
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
+```
+
+# FileReader
+
+read the contents of a file as a stream of characters. read() returns int value contains byte value. When read() returns -1, there is no more data to be read.
+
+```java
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+
+        try {
+            FileReader reader = new FileReader("poem.txt");
+            int data = reader.read();
+
+            while (data != -1) {
+                System.out.print((char)data); //cast into character
+                data = reader.read();
+            }
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
+```
+
+# audio
+
+create a audio player in console
+
+```java
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        Scanner scanner = new Scanner(System.in);
+
+        File file = new File("BabyElephantWalk60.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+
+        String response = "";
+
+        while (!response.equals("Q")) {
+            System.out.println("Enter P for play, S for Stop, R for reset, Q for quit.");
+            System.out.print("Enter you choice: ");
+            response = scanner.next().toUpperCase();
+
+            switch (response) {
+                case ("P"):
+                    clip.start();
+                    break;
+                case ("S"):
+                    clip.stop();
+                    break;
+                case ("R"):
+                    clip.setMicrosecondPosition(0);
+                    break;
+                case ("Q"):
+                    clip.close();
+                    break;
+                default:
+                    System.out.println("Not a valid response.");
+            }
+        }
+        System.out.println("Bye!");
+    }
+}
+```
+
+# GUI
+
+JFrame: a GUI window to add components
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame(); //create a frame
+        frame.setTitle("Try the frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // make sure to kill the frame, not just hide it to the background
+        frame.setSize(420, 420); // set the size
+        frame.setResizable(false); // prevent the frame been resized :)
+        frame.setVisible(true); // make the frame visible
+
+        ImageIcon image = new ImageIcon("logo.png");
+        frame.setIconImage(image.getImage()); // change the frame icon
+        frame.getContentPane().setBackground(new Color(205, 55,122)); // change frame background color
+    }
+}
+```
+
+# label
+
+a GUI display area for a string of text, an image, or both.
+
+```java
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+        ImageIcon image = new ImageIcon("logo.png");
+
+        Border border = BorderFactory.createLineBorder(Color.green, 3);
+
+        JLabel label = new JLabel();
+        label.setText("do you code?");
+        label.setIcon(image);
+        label.setHorizontalTextPosition(JLabel.CENTER); // change the label position center, left or right of the image.
+        label.setVerticalTextPosition(JLabel.TOP); // change the vertical position
+        label.setForeground(Color.green); // set text font color
+        label.setFont(new Font("MV Boli", Font.PLAIN,20)); // set text font
+        label.setIconTextGap(-25); // set gap of text to the image
+        label.setBackground(Color.black); // set text background color
+        label.setOpaque(true); //display background color
+        label.setBorder(border); //set label border
+        label.setVerticalAlignment(JLabel.CENTER); // set vertical position of icon + text within label
+        label.setHorizontalAlignment(JLabel.CENTER);
+//        label.setBounds(0,0,250,250);
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(500, 500);
+//        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.add(label);
+        frame.pack(); //adjust the size of the label with the frame
+    }
+}
+```
+
+# panel
+
+a GUI component that functions as a container to hold other components
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        ImageIcon icon = new ImageIcon("logo.png");
+        JLabel label = new JLabel();
+        label.setText("Hello");
+        label.setIcon(icon);
+        label.setVerticalAlignment(JLabel.TOP);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+
+        JPanel redPanel = new JPanel();
+        redPanel.setBackground(Color.red);
+        redPanel.setBounds(0,0,250,250);
+
+        JPanel bluePanel = new JPanel();
+        bluePanel.setBackground(Color.blue);
+        bluePanel.setBounds(250,0,250,250);
+
+        JPanel greenPanel = new JPanel();
+        greenPanel.setBackground(Color.green);
+        greenPanel.setBounds(0,250,500,250);
+        greenPanel.setLayout(new BorderLayout());
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setSize(750,750);
+        frame.setVisible(true);
+        redPanel.add(label);
+        frame.add(redPanel);
+        frame.add(bluePanel);
+        frame.add(greenPanel);
+    }
+}
+```
+
+# JButton
+
+a java GUI button
+
+```java
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MyFrame extends JFrame {
+    JButton button;
+
+    MyFrame(){
+        button = new JButton();
+        button.setBounds(200,100,100,50);
+        button.addActionListener(e -> System.out.println("hello"));
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setSize(500,500);
+        this.setVisible(true);
+        this.add(button);
+    }
+}
+```
