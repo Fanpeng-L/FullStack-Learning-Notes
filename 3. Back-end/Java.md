@@ -1054,6 +1054,200 @@ public class Main {
 
 public, protected, private
 
-```java
+# encapsulation
 
+attributes of a class will be hidden or private, can be accessed via (getters, setters)
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car("Chevrolet", "Camaro", 2021);
+
+        System.out.println(car.getMake());
+        System.out.println(car.getModel());
+        System.out.println(car.getYear());
+
+        car.setYear(2024);
+        System.out.println(car.getMake());
+        System.out.println(car.getModel());
+        System.out.println(car.getYear());
+    }
+}
+
+
+public class Car {
+
+    private String make;
+    private String model;
+    private int year;
+
+    Car(String make, String model, int year) {
+        this.setMake(make);
+        this.setModel(model);
+        this.setYear(year);
+    }
+
+    //getter methods: to change private attribute
+    public String getMake(){
+        return make;
+    }
+    public String getModel(){
+        return model;
+    }
+    public int getYear(){
+        return year;
+    }
+
+    // setter methods:
+    public void setMake(String make){
+        this.make = make;
+    }
+    public void setModel(String model){
+        this.model = model;
+    }
+    public void setYear(int year){
+        this.year = year;
+    }
+}
+```
+
+# copy objects
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car1 = new Car("Chevrolet", "Camaro", 2021);
+        Car car2 = new Car("Ford", "Mustang", 2022);
+
+        // use the copy method: now they have different address in memory but have same attributes:
+        car2.copy(car1);
+
+        System.out.println(car1);
+        System.out.println(car2);
+        System.out.println();
+        System.out.println(car1.getMake());
+        System.out.println(car1.getModel());
+        System.out.println(car1.getYear());
+        System.out.println();
+        System.out.println(car2.getMake());
+        System.out.println(car2.getModel());
+        System.out.println(car2.getYear());
+    }
+}
+
+
+public class Car {
+
+    private String make;
+    private String model;
+    private int year;
+
+    Car(String make, String model, int year) {
+        this.setMake(make);
+        this.setModel(model);
+        this.setYear(year);
+    }
+
+    //getter methods: to change private attribute
+    public String getMake(){
+        return make;
+    }
+    public String getModel(){
+        return model;
+    }
+    public int getYear(){
+        return year;
+    }
+
+    // setter methods:
+    public void setMake(String make){
+        this.make = make;
+    }
+    public void setModel(String model){
+        this.model = model;
+    }
+    public void setYear(int year){
+        this.year = year;
+    }
+
+    // copy method
+    public void copy(Car x) {
+        this.setModel(x.getModel());
+        this.setYear(x.getYear());
+        this.setMake(x.getMake());
+    }
+}
+```
+
+can also copy during the creation process of the second car:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Car car1 = new Car("Chevrolet", "Camaro", 2021);
+        //Car car2 = new Car("Ford", "Mustang", 2022);
+
+        Car car2 = new Car(car1);
+
+        System.out.println(car1);
+        System.out.println(car2);
+        System.out.println();
+        System.out.println(car1.getMake());
+        System.out.println(car1.getModel());
+        System.out.println(car1.getYear());
+        System.out.println();
+        System.out.println(car2.getMake());
+        System.out.println(car2.getModel());
+        System.out.println(car2.getYear());
+    }
+}
+
+
+
+public class Car {
+
+    private String make;
+    private String model;
+    private int year;
+
+    Car(String make, String model, int year) {
+        this.setMake(make);
+        this.setModel(model);
+        this.setYear(year);
+    }
+
+    Car(Car x){
+        this.copy(x);
+    }
+
+    public String getMake(){
+        return make;
+    }
+    public String getModel(){
+        return model;
+    }
+    public int getYear(){
+        return year;
+    }
+
+    public void setMake(String make){
+        this.make = make;
+    }
+    public void setModel(String model){
+        this.model = model;
+    }
+    public void setYear(int year){
+        this.year = year;
+    }
+
+    // copy method
+    public void copy(Car x) {
+        this.setModel(x.getModel());
+        this.setYear(x.getYear());
+        this.setMake(x.getMake());
+    }
+}
 ```
