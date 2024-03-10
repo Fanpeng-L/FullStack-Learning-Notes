@@ -810,9 +810,9 @@ public class Car {
 
 # static keyword
 
-(class variable)
+non-static: can only apply to individual class objects and not to the class itself. Because the class itself is like a blueprint.
 
-used to declare members (variables and methods) that belong to the class itself, rather than to instances (objects) of the class.
+static:
 
 static variable & static method
 
@@ -1721,3 +1721,287 @@ public class MyFrame extends JFrame {
     }
 }
 ```
+
+# generics
+
+generic methods
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // several different data types array:
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        Double[] doubleArray = {5.5, 6.6, 7.7};
+        Character[] charArray = {'A', 'B', 'C'};
+        String[] stringArray = {"hi", "D", "happy"};
+
+        displayArray(intArray);
+        displayArray(doubleArray);
+        displayArray(charArray);
+        displayArray(stringArray);
+
+    }
+    //generic method to display the arrays of different data types:
+    public static <Thing> void displayArray(Thing[] array) {
+        for(Thing x: array) {
+            System.out.print(x+"  ");
+        }
+        System.out.println();
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // several different data types array:
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        Double[] doubleArray = {5.5, 6.6, 7.7};
+        Character[] charArray = {'A', 'B', 'C'};
+        String[] stringArray = {"hi", "D", "happy"};
+
+        System.out.println(getFirst(intArray));
+        System.out.println(getFirst(stringArray));
+        System.out.println(getFirst(doubleArray));
+        System.out.println(getFirst(charArray));
+
+    }
+    //generic
+    public static <Thing> void displayArray(Thing[] array) {
+        for(Thing x: array) {
+            System.out.print(x+"  ");
+        }
+        System.out.println();
+    }
+
+    public static <T> T getFirst(T[] array) {
+        return array[0];
+    }
+}
+```
+
+generic class
+
+bounded types
+
+# serialization & deserialization
+
+converting an object into a byte stream and reverse
+
+serialization project:
+
+```java
+// Main.java
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        User user = new User();
+
+        user.name ="bro";
+        user.password = "lkajsldf";
+
+        //serialize
+        FileOutputStream fileOut = new FileOutputStream("UserInfo.ser");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(user);
+        out.close();
+        fileOut.close();
+
+        System.out.println("object info saved");
+    }
+}
+
+
+// User.java
+import java.io.Serializable;
+
+public class User implements Serializable {
+    String name;
+    String password;
+
+    public void sayHello() {
+        System.out.println("Hello "+name);
+    }
+}
+```
+
+Deserialization Project:
+
+```java
+// Main.java
+import java.io.*;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        // deserialize
+        User user = null;
+        FileInputStream fileIn = new FileInputStream("/Users/Peng/Documents/CS/Java/my-first-java-code/UserInfo.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        user = (User) in.readObject();
+        in.close();
+        fileIn.close();
+
+        System.out.println(user.name);
+        System.out.println(user.password);
+        user.sayHello();
+    }
+}
+
+
+// Use.java
+import java.io.Serializable;
+
+public class User implements Serializable {
+    String name;
+    String password;
+
+    public void sayHello() {
+        System.out.println("Hello "+name);
+    }
+}
+```
+
+# Timer, TimerTask
+
+```java
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Task is complete.");
+            }
+        };
+        timer.schedule(task, 3000);
+
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.YEAR,2024);
+        date.set(Calendar.MONTH,Calendar.JUNE);
+        date.set(Calendar.DAY_OF_MONTH,20);
+        date.set(Calendar.MINUTE,0);
+        date.set(Calendar.SECOND,0);
+        date.set(Calendar.MILLISECOND,0);
+
+        timer.schedule(task, date.getTime());
+
+        timer.scheduleAtFixedRate(task,0,2000);
+    }
+}
+```
+
+# threads
+
+```java
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+
+        System.out.println(Thread.activeCount());
+        System.out.println(Thread.currentThread().getName());
+        Thread.currentThread().setPriority(10);
+        System.out.println(Thread.currentThread().getPriority());
+        System.out.println(Thread.currentThread().isAlive());
+
+        for(int i = 3; i>0; i--) {
+            System.out.println(i);
+            Thread.sleep(1000); // to make the program or thread sleep for amount of time.
+        }
+        System.out.println("You are done.");
+    }
+}
+```
+
+```java
+
+public class Main {
+    public static void main(String[] args)  {
+
+        MyThread thread2 = new MyThread();
+        thread2.start();
+        System.out.println(thread2.isAlive());
+        thread2.setName("2nd thread");
+        System.out.println(thread2.getName());
+        System.out.println(thread2.getPriority());
+        thread2.setPriority(1);
+        System.out.println(thread2.getPriority());
+
+        System.out.println(Thread.activeCount());
+
+        //Daemon thread is a low priority thread that run at the background
+        thread2.setDaemon(true);
+        System.out.println(thread2.isDaemon());
+    }
+}
+```
+
+# multithread
+
+the threads run independently.
+
+```java
+//main.java
+public class Main {
+    public static void main(String[] args)  {
+        // 2 ways of creating threads:
+        MyThread thread1 = new MyThread();
+
+        MyRunnerable runnerable1 = new MyRunnerable();
+        Thread thread2 = new Thread(runnerable1);
+
+        thread1.start();
+        thread1.join(3000); //calling thread waits until the specified thread dies or for XXX milliseconds
+        thread2.start();
+    }
+}
+
+// 1st way of creating thread: create a subclas of Thread:
+//MyThread.java
+public class MyThread extends Thread {
+    //overriding the Thread default run() method:
+    @Override
+    public void run() {
+        for (int i = 10; i > 0; i--) {
+            System.out.println("Thread #1 : " + i);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.out.println("thread #1 is sleeping now.");
+
+    }
+}
+
+// 2nd way of creating thread: implement Runnable interface and pass instance as an argument to the Thread() constructor
+//MyRunneralbe.java
+public class MyRunnerable implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Thread #2 : " + i);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.out.println("thread #2 is finished.");
+    }
+}
+```
+
+# packages
