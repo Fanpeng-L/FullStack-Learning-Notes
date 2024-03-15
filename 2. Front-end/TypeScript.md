@@ -3,17 +3,22 @@
 - **Static**: Java, C, C++, Go...
   (_assign type to variables_)
 
-- Dynamic: Javascript, Python, Ruby, PHP...
+- **Dynamic**: Javascript, Python, Ruby, PHP...
 
-vanilla ts setup:
+vanilla TS setup:
 
 ⭐️ Browsers don't read .ts files, TypeScript need to be compiled with `tsc`.
 
-- `tsc --init` the, we can change the target compile version to `es6` in the `tsconfig.json`.
+**`.ts -> Compiler -> .js`**
 
-<br>
+# TS features
 
-# TypeScript basics:
+- Type checking
+- Code completion
+- Refactoring
+- Shorthand notation
+
+# basics
 
 ```ts
 let id: number = 5;
@@ -24,91 +29,200 @@ let isPublished: boolean = false;
 let x: any = "hello";
 
 x = true;
+```
 
+# array type
+
+```ts
 let ids: number[] = [12, 23, 6, 745, 3];
-ids.push(12);
 
-let arr: any[] = [1, 34, true, "hello"];
+let arr: string[] = ["hi", "hello"];
+```
 
-//tuple:
-let person: [number, string, boolean] = [1, "happy", true];
+# tuple type
 
-//tuple array:
-let employee: [number, string][];
-employee = [
-  [1, "mary"],
-  [2, "lisa"],
-];
+```ts
+let person: [number, string] = [1, "Tom"];
+```
 
-//union
-let product: string | number = 22;
-product = "cake";
+# enum type
 
-//enum
+```ts
 enum Direction1 {
   Up = 1,
   Down,
   Left,
   Right,
 }
-console.log(Direction1.Up); // 1
+console.log(Direction1.Down); // 2
 
-enum Direction2 {
-  Up = "Up",
-  Down = "Down",
-  Left = "Left",
-  Right = "Right",
+enum Size {
+  Small = "s",
+  Medium = "m",
+  Large = "l",
 }
-console.log(Direction1.Left); // Left
+console.log(Size.Medium); //m
+```
 
-//Objects
-type User = {
-  id: number;
+# object type
+
+```ts
+// type alias
+type Employee = {
+  readonly id: number;
   name: string;
+  retire: (date: Date) => void;
 };
 
-const user: User = {
+const employee1: Employee = {
   id: 1,
   name: "John",
+  retire: (date: Date) => console.log(date),
 };
+```
 
-// type assertion
-let cid: any = 1;
-// let customerId = <number>cid;
-let customerId = cid as number;
+# function type
 
-//functions
+always annotate types for parameters, return values.
+
+`"noUnusedParameters": true,`
+`"noImplicitReturns":true,`
+`"noUnusedLocals":true,`
+
+if parameters is not used, can provide default values
+
+```ts
 function addNum(x: number, y: number): number {
   return x + y;
 }
-console.log(addNum(1, 2));
+```
 
-function log(message: string | number): void {
-  console.log(message);
+# union type
+
+type1 or type2
+
+```ts
+function kgToLbs(weight: number | string): number {
+  if (typeof weight === "number") return weight * 2;
+  else return parseInt(weight) * 2;
 }
 
-//interface: custom type
-interface userInterface {
-  id: number;
-  readonly name: string;
-  age?: number; // optional
-}
+kgToLbs(10);
+kgToLbs("10kg");
+```
 
-const user1: userInterface = {
-  id: 1,
-  name: "john",
+# intersection type
+
+type1 and type2
+
+```ts
+type Draggable = {
+  drag: () => void;
+};
+type Resizable = {
+  resize: () => void;
 };
 
-//Cannot reassign to 'name' because it is a read-only in the interface
-user1.name = "lisa";
+type UIWidget = Draggable & Resizable;
 
-// interface with function
-interface MathFun {
-  (x: number, y: number): number;
+let textbox = UIWidget ={
+  drag: () =>void,
+  resize: () =>void
+}
+```
+
+# literal type
+
+annotate with some specific value
+
+```ts
+// literal with union:
+type Quantity = 50 | 100;
+let quantity1 = (Quantity = 100);
+
+type Metric = "cm" | "inch";
+let newMetric = (Metric = "cm");
+```
+
+# deal with null/undefined
+
+we have to use union type when passing a null or undefined value
+
+```ts
+function greet(name: string | null | undefined) {
+  if (name) {
+    console.log(`hello ${name}`);
+  } else {
+    console.log("Hello");
+  }
 }
 
-const add: MathFun = (x: number, y: number): number => x + y;
+greet(null);
+```
 
+# optional chaining
+
+optional property access operator
+
+```ts
+type User = {
+  birthday: Date;
+};
+
+function getUser(id: number): User | null | undefined {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let user1 = getUser(1);
+console.log(user1?.birthday); //check if the user is not null or undefined
+```
+
+optional element access operator
+
+optional call access operator
+
+# interface: custom type
+
+```ts
+interface Author {
+  name: string;
+  age: number;
+}
+
+const author1: Author = {
+  name: "john",
+  age: 35,
+};
+
+interface Post {
+  title: string;
+  body: string;
+  tags: string[];
+  createdAt: Date;
+  author: Author; // put the Author interface into this post interface
+}
+
+const newPost: Post = {
+  title: "my first post",
+  body: "something fun",
+  tags: ["gaming", "fun"],
+  created_at: new Date(),
+  author: author1,
+};
+```
+
+interface as function argument
+
+```ts
+function createPost(post: Post): void {
+  console.log(post.title);
+  console.log(post.author.age);
+}
+```
+
+# class
+
+```ts
 // classes
 class Person {
   // there are three modes in the class, private, public and protected. default is public
