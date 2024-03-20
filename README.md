@@ -68,7 +68,7 @@
 ## 4. API
 
 - [REST](3.%20Back-end/REST.md)
-- Graphql
+- [Graphql](3.%20Back-end/Graphql.md)
 
 ## 5. Others
 
