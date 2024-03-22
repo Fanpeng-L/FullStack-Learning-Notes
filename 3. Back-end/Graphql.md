@@ -57,3 +57,13 @@ export const typeDefs = `#graphql
 # 3. define a resolver
 
 instruct Apollo Server that it should use that data set when executing a query.
+
+# 4. Query variables
+
+```js
+review(_, args) {
+      return db.reviews.find((review) => review.id === args.id);
+    },
+```
+
+# 5. related data
