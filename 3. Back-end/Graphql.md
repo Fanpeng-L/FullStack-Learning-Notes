@@ -22,7 +22,20 @@ npm install @apollo/server graphql
 
 use schema to define the structure of data set that clients can query.
 
-regular object types example:
+## scalar type
+
+```js
+String, Int, Float, Boolean, ID;
+```
+
+## Object type
+
+```js
+type Character {
+  name: String!
+  appearsIn: [Episode!]!
+}
+```
 
 ## query & mutation type
 
@@ -34,7 +47,7 @@ export const typeDefs = `#graphql
     id:ID!
     title:String!
     platform:[String!]!
-  } 
+  }
   type Review {
     id: ID!
     rating: Int!
