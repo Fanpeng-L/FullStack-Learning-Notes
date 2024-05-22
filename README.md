@@ -1,6 +1,6 @@
 # FullStack Web Dev Learning Notes
 
-📝 This is the repo of my learning notes for full-stack web development.
+📝 My learning notes for full-stack web development.
 
 # 🌷 Intro
 
@@ -77,8 +77,7 @@
 
 <br>
 
-# 🌷 Extra
+# 🌷 DevOps
 
-## 1. Mobile
-
-## 2. Desktop
+- Linux
+- AWS
