@@ -6,7 +6,11 @@
 2. [Pages](#2-pages-react-components)
 3. [Optimize Fonts](#3-optimizing-fonts)
 4. [Optimize Images](#4-optimize-images)
-5. [Layouts](#5-layouts)
+5. [Layouts & Pages](#5-layouts--pages)
+6. [Optimize Navigation](#6-optimize-navigation)
+7. [Database with postgresql](#7-database-with-vercelpostgres)
+8. [Fetch Data](#8-fetch-data)
+9. [Static and Dynamic Rendering](#9-static-and-dynamic-rendering)
 
 ## 1. Rendering
 
@@ -128,3 +132,77 @@ export default function Page() {
 ## 5. Layouts & pages
 
 <img src="../images/Front-end/page-folder.png" width="600">
+
+## 6. Optimize Navigation
+
+### how to:
+
+1. `import Link from 'next/link';`
+2. `<Link href="…">` instead of using `<a>`
+
+In production, Next.js automatically prefetches the `<Link>` route in the background. Now the browser doesn't reload the whole page, and only the route segments that change re-render.
+
+### Show active Link with `usePathname()` hook:
+
+```tsx
+"use client";
+
+import { usePathname } from "next/navigation";
+
+const pathname = usePathname();
+```
+
+## 7. Database with @vercel/postgres
+
+https://nextjs.org/learn/dashboard-app/setting-up-your-database
+
+## 8. Fetch data
+
+request waterfall:
+
+In the case of data fetching, each request can only begin once the previous request has returned data.
+
+<img src="../images//Front-end/request-waterfall.png" width="700">
+
+## 9. Static & Dynamic Rendering
+
+to solve the problem:
+
+- The data requests are creating an unintentional waterfall.
+- The dashboard is static, so any data updates will not be reflected on your application.
+
+## 10. streaming
+
+When a user visits a page, their browser sends a request to the server.
+
+Instead of generating the whole page on the server and then sending it all at once, the server starts sending the parts of the page that are ready immediately.
+
+2 ways to implement streaming in Next.js:
+
+- At the page level, with the `loading.tsx` file.
+- For specific components, with `<Suspense>`.
+
+### `lodaing.tsx` file:
+
+1. create `loading.tsx` file
+2.
+
+```tsx
+export default function Loading() {
+  return <div>Loading...</div>;
+}
+```
+
+3. add styles to the loading file
+
+### streaming a component using React Suspense
+
+## 11. Partial Prerendering
+
+## 12. Adding Search and Pagination
+
+search params
+
+## 13. Mutate data
+
+### Server actions
