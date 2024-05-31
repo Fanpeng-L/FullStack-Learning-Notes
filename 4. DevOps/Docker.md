@@ -5,7 +5,6 @@
 - [🐋 Basic setup: React test demo](#-basic-setup-react-test-demo)
 - [🐋 Docker compose (with react demo)](#-docker-compose-with-react-demo)
 - [🐋 Docker compose watch (with MERN demo)](#-docker-compose-watch-with-mern-demo)
-- [🐋 With Nextjs](#-with-nextjs)
 
 # 🐋 Concepts
 
@@ -50,5 +49,3 @@ Image is like a recipe🧾, we can create a lot of cakes 🍰🍰🍰🍰 (conta
 
 `docker compose up`
 `docker compose watch`
-
-# 🐋 With Nextjs
