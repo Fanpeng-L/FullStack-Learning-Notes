@@ -35,7 +35,7 @@
 
 ## III. More
 
-- [npm](/2.%20Front-end/npm.md)
+- [npm/pnpm/yarn](/2.%20Front-end/npm_pnpm_yarn.md)
 - Markdown
 - [Terminal](/2.%20Front-end/terminal.md)
 - [Git](/2.%20Front-end/git.md)
